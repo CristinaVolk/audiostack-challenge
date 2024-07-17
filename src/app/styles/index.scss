@@ -1,0 +1,10 @@
+@import "variables/global";
+@import "reset";
+
+
+body {
+  margin: 0;
+  font-family: var(--font-family-main), serif;
+
+  background: var(--background-main);
+}
