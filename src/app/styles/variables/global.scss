@@ -5,4 +5,17 @@
   // colors
 
   --background-main: #D3D1CB;
+  --darkBackground: #001e2d;
+  --sideNavBarHover: #001b29;
+  --lightBackground: #f6f7f9;
+
+  // text color
+  --fontColor: rgb(64, 78, 95);
+  --primaryColor: #d9e021;
+  --secondary-text-color: var(--sideNavBarHover);
+
+
+  // shadows
+  --shadow-soft: 0 0.25rem 2rem 0;
+  --shadow-focused: 0px 8px 48px 0;
 }

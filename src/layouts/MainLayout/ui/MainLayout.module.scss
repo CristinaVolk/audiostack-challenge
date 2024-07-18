@@ -1,0 +1,57 @@
+.MainLayout {
+
+  .header {
+    height: 26vh;
+  }
+
+  .contentLayout {
+    min-height: 100vh;
+    display: grid;
+    grid-template-areas:
+            'sidebar content rightbar';
+    grid-template-columns: min-content 1fr 0.4fr;
+  }
+
+  .sidebar {
+    grid-area: sidebar;
+    padding: 32px 0;
+    max-width: 284px;
+  }
+
+  .content {
+    grid-area: content;
+    max-width: 1200px;
+    width: 100%;
+    justify-self: center;
+    padding: 32px;
+  }
+
+  .rightbar {
+    grid-area: rightbar;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .rightbar,
+  .sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+  }
+
+  .toolbar {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 15px 15px 20px;
+    background: var(--darkBackground);
+    box-shadow: var(--shadow-soft);
+  }
+
+}
+
+
+
+

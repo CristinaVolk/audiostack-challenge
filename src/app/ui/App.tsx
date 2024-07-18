@@ -1,11 +1,19 @@
 import React from 'react';
+import {Outlet} from "react-router";
 
-import classes from './App.module.scss';
+import {MainLayout} from "@/layouts/MainLayout";
+import {Navbar} from "@/widgets/Navbar";
+
+import {SearchArtists} from "@/features/SearchArtists";
+
 
 export function App() {
   return (
-    <div className={classes.App}>
-     App
-    </div>
+          <MainLayout
+              header={<Navbar />}
+              content={<Outlet />}
+              sidebar={<h1>Navigation</h1>}
+              toolbar={<SearchArtists />}
+          />
   );
 }

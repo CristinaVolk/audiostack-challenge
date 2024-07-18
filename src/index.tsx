@@ -1,12 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import {RouterProvider} from "react-router-dom";
 
+import {router} from "./app/providers/Router";
 import './app/styles/index.scss';
-import {App} from './app/ui/App';
+import {StoreProvider} from "./app/providers/StoreProvider";
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
 root.render(
-    <App />
+    <StoreProvider>
+        <RouterProvider router={router} />
+    </StoreProvider>
 );
