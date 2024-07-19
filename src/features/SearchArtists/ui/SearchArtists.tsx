@@ -1,4 +1,4 @@
-import React, {ChangeEvent} from 'react';
+import React, {ChangeEvent, memo, useCallback} from 'react';
 import {useSelector} from "react-redux";
 
 import {searchArtistsActions} from "../model/slices/searchArtistsSlice";
@@ -11,13 +11,13 @@ import {ImageComponent} from "@/shared/ui/ImageComponent/ImageComponent";
 
 const iconPath = 'assets/icons/search-icon-white.png'
 
-export const SearchArtists = () => {
+export const SearchArtists = memo(() => {
     const dispatch = useAppDispatch()
     const search = useSelector(getSearchTerm)
 
-    function onSearchChange(event: ChangeEvent<HTMLInputElement>) {
+    const onSearchChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
         dispatch(searchArtistsActions.setSearch(event.target.value))
-    }
+    },[dispatch])
 
     return (
         <div className={classNames(classes.SearchArtists, {} , [])}>
@@ -25,4 +25,4 @@ export const SearchArtists = () => {
             <input className={classes.input} onChange={onSearchChange} value={search}/>
         </div>
     )
-}
+})

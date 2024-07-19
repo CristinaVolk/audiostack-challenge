@@ -1,0 +1,1 @@
+export {ReleaseDetailsPage} from "./ui/ReleaseDetailsPage";

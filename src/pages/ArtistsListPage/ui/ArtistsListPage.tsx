@@ -2,6 +2,7 @@ import React, {useEffect} from 'react'
 import {useLocation} from "react-router";
 import {useSelector} from "react-redux";
 
+import {artistsListActions} from "../model/slices/artistsListSlice";
 import {getArtistsList, getArtistsListIsLoading} from "../model/selectors/getArtistsListSelector";
 import {fetchArtists} from "../model/services/fetchArtists";
 import classes from './ArtistsListPage.module.scss'
@@ -9,8 +10,8 @@ import classes from './ArtistsListPage.module.scss'
 import {AppRouterByPathPattern} from "@/shared/consts/router";
 import {useAppDispatch} from "@/shared/hooks/useAppDispatch";
 import {getSearchTerm} from "@/features/SearchArtists";
-import {artistsListActions} from "@/pages/ArtistsListPage/model/slices/artistsListSlice";
-import {ArtistDetails} from "@/entities/ArtistDetails/ui/ArtistDetails";
+import {ArtistDetails} from "@/entities/ArtistDetails";
+import {Loading} from "@/shared/ui/Loading/Loading";
 
 
 export const ArtistsListPage = () => {
@@ -28,7 +29,7 @@ export const ArtistsListPage = () => {
 
 
     if (isLoading) {
-        return (<h1>Loading ...</h1>)
+        return <Loading />
     }
 
     return (

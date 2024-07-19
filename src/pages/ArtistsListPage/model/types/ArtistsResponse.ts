@@ -1,20 +1,10 @@
-import {Artist} from "@/entities/ArtistDetails";
+import type {Pagination} from "@/shared/types/AxiosResponse";
+import type {Artist} from "@/shared/types/Artist";
 
 export interface ArtistsResponse {
     pagination: Pagination;
     results:    Artist[];
 }
 
-export interface Pagination {
-    per_page: number;
-    pages:    number;
-    page:     number;
-    urls:     Urls;
-    items:    number;
-}
 
-export interface Urls {
-    last: string;
-    next: string;
-}
 

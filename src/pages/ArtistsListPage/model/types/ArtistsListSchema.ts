@@ -1,4 +1,5 @@
-import {Artist} from "./ArtistsResponse";
+import type {Artist} from "@/shared/types/Artist";
+
 
 export interface ArtistsListSchema {
     isLoading?: boolean;

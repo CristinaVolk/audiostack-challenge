@@ -1,7 +1,8 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
-import {ArtistDetailsSchema, Release} from "@/entities/ArtistDetails/model/types/ArtistDetailsSchema";
+import {ArtistDetailsSchema} from "@/entities/ArtistDetails/model/types/ArtistDetailsSchema";
 import {fetchReleasesByArtist} from "@/entities/ArtistDetails/model/services/fetchReleasesByArtist";
+import type {Release} from "@/shared/types/Release";
 
 
 const initialState: ArtistDetailsSchema = {

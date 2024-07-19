@@ -1,12 +1,13 @@
 import {AxiosResponse} from "axios";
 import {createAsyncThunk} from "@reduxjs/toolkit";
 
-import {Artist, ArtistsResponse} from "../types/ArtistsResponse";
+import type {ArtistsResponse} from "../types/ArtistsResponse";
 
-import {StateSchema, ThunkConfig, ThunkExtraArg} from "@/app/providers/StoreProvider";
-import {getSearchTerm} from "@/features/SearchArtists/model/selectors/getSearchArtistsSelector";
+import type {StateSchema, ThunkConfig, ThunkExtraArg} from "@/app/providers/StoreProvider";
+import {getSearchTerm} from "@/features/SearchArtists";
 import {$search} from "@/shared/api/endpoints";
 import {AUTH_KEY, AUTH_SECRET} from "@/shared/api/config";
+import {Artist} from "@/shared/types/Artist";
 
 
 export const fetchArtists = createAsyncThunk<

@@ -1,5 +1,6 @@
 export enum AppRoutes {
     HOME = 'Home',
     ARTISTS = 'Artists',
-    ABOUT = 'About'
+    ABOUT = 'About',
+    RELEASE_DETAILS = 'Release'
 }
