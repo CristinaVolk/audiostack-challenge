@@ -1,3 +1,3 @@
-import {StateSchema} from "../../../../app/providers/StoreProvider";
+import {StateSchema} from "@/app/providers/StoreProvider";
 
-export const getSearchArtistsSelector = (state: StateSchema) => state.searchArtists.search ?? ''
+export const getSearchTerm = (state: StateSchema) => state.searchArtists.search ?? ''

@@ -8,7 +8,7 @@ const initialState: SearchArtistsSchema = {
 }
 
 const searchArtistsSlice = createSlice({
-    name: 'searchArtistsSlice',
+    name: 'searchReleasesSlice',
     initialState,
     reducers: {
         setSearch: (state, action: PayloadAction<string>) => {
