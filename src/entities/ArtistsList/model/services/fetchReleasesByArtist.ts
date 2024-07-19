@@ -1,7 +1,7 @@
 import {AxiosResponse} from "axios";
 import {createAsyncThunk} from "@reduxjs/toolkit";
 
-import {ReleaseResponse} from "../types/ArtistDetailsSchema";
+import {ReleaseResponse} from "../types/ArtistReleasesSchema";
 
 import {ThunkConfig, ThunkExtraArg} from "@/app/providers/StoreProvider";
 import {$artists} from "@/shared/api/endpoints";

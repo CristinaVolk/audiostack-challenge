@@ -2,7 +2,7 @@ import type {Pagination} from "@/shared/types/AxiosResponse";
 import type {Release} from "@/shared/types/Release";
 
 
-export interface ArtistDetailsSchema {
+export interface ArtistReleasesSchema {
     isLoading: boolean
     error: string
     releases: Release[]

@@ -8,7 +8,7 @@ import {
 import { $api } from '@/shared/api/api';
 import {searchArtistsReducer} from "@/features/SearchArtists";
 import {artistsListReducer} from "@/pages/ArtistsListPage";
-import {artistsDetailsReducer} from "@/entities/ArtistDetails";
+import {artistsReleasesReducer} from "@/entities/ArtistsList";
 
 
 export function createReduxStore(
@@ -17,7 +17,7 @@ export function createReduxStore(
     const rootReducer: ReducersMapObject<StateSchema> = {
         searchArtists: searchArtistsReducer,
         artistsList: artistsListReducer,
-        artistDetails: artistsDetailsReducer
+        artistReleases: artistsReleasesReducer
     };
 
     const extraThunk: ThunkExtraArg = {

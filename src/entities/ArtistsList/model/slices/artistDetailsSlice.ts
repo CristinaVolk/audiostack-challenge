@@ -1,18 +1,19 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
-import {ArtistDetailsSchema} from "@/entities/ArtistDetails/model/types/ArtistDetailsSchema";
-import {fetchReleasesByArtist} from "@/entities/ArtistDetails/model/services/fetchReleasesByArtist";
+import {ArtistReleasesSchema} from "../types/ArtistReleasesSchema";
+import {fetchReleasesByArtist} from "../services/fetchReleasesByArtist";
+
 import type {Release} from "@/shared/types/Release";
 
 
-const initialState: ArtistDetailsSchema = {
+const initialState: ArtistReleasesSchema = {
     isLoading: false,
     error: '',
     releases: [],
 }
 
-const artistsDetailsSlice = createSlice({
-    name: 'artistsDetailsSlice',
+const artistsReleasesSlice = createSlice({
+    name: 'artistsReleasesSlice',
     initialState,
     reducers: {
         setReleases: (state, action: PayloadAction<Release[]>) => {
@@ -38,6 +39,6 @@ const artistsDetailsSlice = createSlice({
 });
 
 export const {
-    reducer: artistsDetailsReducer,
-    actions: artistsDetailsActions,
-} = artistsDetailsSlice
+    reducer: artistsReleasesReducer,
+    actions: artistsReleasesActions,
+} = artistsReleasesSlice

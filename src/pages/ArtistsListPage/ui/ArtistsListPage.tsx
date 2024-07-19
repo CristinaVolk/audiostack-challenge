@@ -3,15 +3,14 @@ import {useLocation} from "react-router";
 import {useSelector} from "react-redux";
 
 import {artistsListActions} from "../model/slices/artistsListSlice";
-import {getArtistsList, getArtistsListIsLoading} from "../model/selectors/getArtistsListSelector";
+import {getArtistsList, getArtistsListError, getArtistsListIsLoading} from "../model/selectors/getArtistsListSelector";
 import {fetchArtists} from "../model/services/fetchArtists";
-import classes from './ArtistsListPage.module.scss'
 
 import {AppRouterByPathPattern} from "@/shared/consts/router";
 import {useAppDispatch} from "@/shared/hooks/useAppDispatch";
 import {getSearchTerm} from "@/features/SearchArtists";
-import {ArtistDetails} from "@/entities/ArtistDetails";
 import {Loading} from "@/shared/ui/Loading/Loading";
+import {ArtistsList} from "@/entities/ArtistsList";
 
 
 export const ArtistsListPage = () => {
@@ -21,6 +20,7 @@ export const ArtistsListPage = () => {
     const artists = useSelector(getArtistsList)
     const search = useSelector(getSearchTerm)
     const isLoading = useSelector(getArtistsListIsLoading)
+    const error = useSelector(getArtistsListError)
 
     useEffect(() => {
         dispatch(fetchArtists());
@@ -35,13 +35,10 @@ export const ArtistsListPage = () => {
     return (
         <>
             <h1>{pageTitle}</h1>
-            <div className={classes.listContainer}>
-                {
-                    artists.length && artists.map(artist => (
-                        <ArtistDetails key={artist.id} artist={artist} />
-                    ))
-                }
-            </div>
+            {artists.length
+                ? <ArtistsList artists={artists} />
+                : error && <p>{error}</p>
+            }
         </>
     )
 }

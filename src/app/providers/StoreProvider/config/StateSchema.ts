@@ -2,13 +2,13 @@ import {AxiosInstance} from "axios";
 
 import {SearchArtistsSchema} from "@/features/SearchArtists";
 import {ArtistsListSchema} from "@/pages/ArtistsListPage";
-import {ArtistDetailsSchema} from "@/entities/ArtistDetails";
+import {ArtistReleasesSchema} from "@/entities/ArtistsList";
 
 
 export interface StateSchema {
     searchArtists: SearchArtistsSchema,
     artistsList: ArtistsListSchema,
-    artistDetails: ArtistDetailsSchema
+    artistReleases: ArtistReleasesSchema
 }
 
 export interface ThunkExtraArg {
