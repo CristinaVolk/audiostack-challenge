@@ -7,6 +7,8 @@ import {
 
 import { $api } from '@/shared/api/api';
 import {searchArtistsReducer} from "@/features/SearchArtists";
+import {artistsListReducer} from "@/pages/ArtistsListPage";
+import {artistsDetailsReducer} from "@/entities/ArtistDetails";
 
 
 export function createReduxStore(
@@ -14,6 +16,8 @@ export function createReduxStore(
 ) {
     const rootReducer: ReducersMapObject<StateSchema> = {
         searchArtists: searchArtistsReducer,
+        artistsList: artistsListReducer,
+        artistDetails: artistsDetailsReducer
     };
 
     const extraThunk: ThunkExtraArg = {
@@ -33,4 +37,4 @@ export function createReduxStore(
 
     return store;
 }
-export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];
+
