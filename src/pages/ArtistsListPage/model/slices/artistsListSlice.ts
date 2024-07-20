@@ -1,10 +1,10 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
-import type {ArtistsListSchema} from "../types/ArtistsListSchema";
+import type {ArtistsListPageSchema} from "../types/ArtistsListPageSchema";
 import {fetchArtists} from "../services/fetchArtists";
 
 
-const initialState: ArtistsListSchema = {
+const initialState: ArtistsListPageSchema = {
     isLoading: false,
     error: '',
     artists: [],
@@ -42,6 +42,6 @@ const artistsListSlice = createSlice({
 });
 
 export const {
-    reducer: artistsListReducer,
-    actions: artistsListActions,
+    reducer: artistsListPageReducer,
+    actions: artistsListPageActions,
 } = artistsListSlice

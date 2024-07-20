@@ -22,7 +22,12 @@ export const SearchArtists = memo(() => {
     return (
         <div className={classNames(classes.SearchArtists, {} , [])}>
             <ImageComponent width={24} height={24} src={iconPath}/>
-            <input className={classes.input} onChange={onSearchChange} value={search}/>
+            <input
+                className={classes.input}
+                onChange={onSearchChange}
+                value={search}
+                placeholder="Search for an artist"
+            />
         </div>
     )
 })

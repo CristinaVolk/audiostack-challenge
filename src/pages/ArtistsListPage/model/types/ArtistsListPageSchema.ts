@@ -1,7 +1,7 @@
 import type {Artist} from "@/shared/types/Artist";
 
 
-export interface ArtistsListSchema {
+export interface ArtistsListPageSchema {
     isLoading?: boolean;
     error?: string;
 

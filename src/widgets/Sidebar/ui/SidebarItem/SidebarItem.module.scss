@@ -1,0 +1,30 @@
+.item {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  transition: 0.2s border-bottom;
+
+  h2 {
+    color: var(--lightBackground);
+  }
+
+  &:hover {
+    border-bottom: 1px white solid;
+  }
+}
+
+.link {
+  opacity: 1;
+}
+
+.collapsed {
+  .link {
+    opacity: 0;
+    transition: 0.2s opacity;
+    width: 0;
+  }
+}
+
+
+
+

@@ -1,7 +1,7 @@
 .MainLayout {
 
   .header {
-    height: 26vh;
+    height: 35vh;
   }
 
   .contentLayout {
@@ -16,6 +16,8 @@
     grid-area: sidebar;
     padding: 32px 0;
     max-width: 284px;
+    background: var(--sideNavBarHover);
+    box-shadow: var(--shadow-soft);
   }
 
   .content {
@@ -24,6 +26,7 @@
     width: 100%;
     justify-self: center;
     padding: 32px;
+    box-shadow: var(--shadow-soft);
   }
 
   .rightbar {

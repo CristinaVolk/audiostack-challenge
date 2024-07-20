@@ -1,0 +1,30 @@
+.SideBar {
+  width: 220px;
+  height: 100%;
+  position: relative;
+
+  .linkItems {
+    margin-top: 40px;
+  }
+
+  .toggle {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    z-index: var(--sidebar-z-index);
+    transform: rotate(90deg);
+  }
+}
+
+.collapsed {
+  width: 50px;
+
+  .linkItems {
+    display: none;
+  }
+
+  .toggle {
+    transform: rotate(-90deg);
+    right: 0;
+  }
+}

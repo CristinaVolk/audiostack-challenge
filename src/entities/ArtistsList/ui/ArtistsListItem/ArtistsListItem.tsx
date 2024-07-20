@@ -1,19 +1,17 @@
-import React, {memo, useEffect} from "react";
-import {useSelector} from "react-redux";
+import React, {memo} from "react";
 
 import {ReleaseDetails} from "../ReleaseDetails/ReleaseDetails";
-import {fetchReleasesByArtist} from "../../model/services/fetchReleasesByArtist";
-import {
-    getArticleReleasesError,
-    getArticleReleasesIsLoading,
-    getArtistReleases
-} from "../../model/selectors/getArtistReleasesSelector";
+import classes from "./ArtistsListItem.module.scss";
 
 import type {Artist} from "@/shared/types/Artist";
-import {useAppDispatch} from "@/shared/hooks/useAppDispatch";
 import {Loading} from "@/shared/ui/Loading/Loading";
 import {ImageComponent} from "@/shared/ui/ImageComponent/ImageComponent";
 import {Release} from "@/shared/types/Release";
+import {Card} from "@/shared/ui/Card/Card";
+import {HStack, VStack} from "@/shared/ui/Stack";
+
+import {useArtistsListItemHook} from "@/entities/ArtistsList/model/hooks/useArtistsListItemHook";
+
 
 interface ArtistsListItemProps {
     artist: Artist
@@ -23,28 +21,43 @@ interface ArtistsListItemProps {
 export const ArtistsListItem = memo((props: ArtistsListItemProps) => {
     const {artist} = props
     const {id, cover_image} = artist
-    const dispatch = useAppDispatch()
-    const releases = useSelector(getArtistReleases)
-    const isLoading = useSelector(getArticleReleasesIsLoading)
-    const error = useSelector(getArticleReleasesError)
+    const {isLoading, error, releases} = useArtistsListItemHook(id)
 
-    useEffect(() => {
-        dispatch(fetchReleasesByArtist(id))
-    }, [dispatch, id]);
 
     if (isLoading) {
-        return <Loading />
+        return (
+            <HStack max justify="center">
+                <Loading />
+            </HStack>
+        )
     }
 
     return (
-        <>
-            <ImageComponent src={cover_image} alt="artist image" height={'100px'} width={'100px'}/>
-            <h1>{artist.title}</h1>
+        <Card
+            max
+            cardPaddings="16"
+            border="smooth"
+            className={classes.ArtistsListItem}
+        >
+            <HStack gap="25">
+                <VStack  gap="10" className={classes.imgContainer}>
+                    <ImageComponent
+                        src={cover_image}
+                        alt="artist image"
+                    />
+                    <h3>{artist.title}</h3>
+                </VStack>
 
-            {releases.length
-                ? releases.map((release: Release) => <ReleaseDetails key={release.id} release={release}/>)
-                : error && <h6>{error}</h6>
-            }
-        </>
+                <VStack gap="10">
+                    <h3>Releases:</h3>
+
+                    {releases.length
+                        ? releases
+                            .map((release: Release) => <ReleaseDetails key={release.id} release={release}/>)
+                        : error && <h6>{error}</h6>
+                    }
+                </VStack>
+            </HStack>
+        </Card>
     )
 })

@@ -14,6 +14,7 @@ interface ReleaseDetailsProps {
 export const ReleaseDetails = memo((props: ReleaseDetailsProps) => {
     const {release} = props
     const {id, resource_url, title, year} = release
+
     return (
         <NavLink
             key={release.id}
@@ -21,7 +22,7 @@ export const ReleaseDetails = memo((props: ReleaseDetailsProps) => {
         >
 
             <div className={classes.ReleaseDetails}>
-                <h3>{title}</h3>
+                <h4>{title}</h4>
                 <p>{year}</p>
             </div>
         </NavLink>

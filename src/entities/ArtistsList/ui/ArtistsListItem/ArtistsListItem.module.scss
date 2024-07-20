@@ -1,0 +1,15 @@
+.ArtistsListItem {
+  box-shadow: var(--shadow-soft);
+
+  &:hover {
+    box-shadow: var(--shadow-focused);
+  }
+
+  .imgContainer {
+    width: 200px;
+  }
+
+  h3, h4 {
+    font-weight: 600;
+  }
+}

@@ -20,6 +20,10 @@ a {
   text-decoration: none;
 }
 
+li.item:has(a.active) {
+  border-bottom: 1px white solid;
+}
+
 h1,
 h2,
 h3,

@@ -1,8 +1,8 @@
-import React, {useEffect} from 'react'
+import React, {useCallback, useEffect} from 'react'
 import {useLocation} from "react-router";
 import {useSelector} from "react-redux";
 
-import {artistsListActions} from "../model/slices/artistsListSlice";
+import {artistsListPageActions} from "../model/slices/artistsListSlice";
 import {getArtistsList, getArtistsListError, getArtistsListIsLoading} from "../model/selectors/getArtistsListSelector";
 import {fetchArtists} from "../model/services/fetchArtists";
 
@@ -11,6 +11,8 @@ import {useAppDispatch} from "@/shared/hooks/useAppDispatch";
 import {getSearchTerm} from "@/features/SearchArtists";
 import {Loading} from "@/shared/ui/Loading/Loading";
 import {ArtistsList} from "@/entities/ArtistsList";
+import {HStack, VStack} from "@/shared/ui/Stack";
+import {useDebounce} from "@/shared/hooks/useDebounce";
 
 
 export const ArtistsListPage = () => {
@@ -22,23 +24,33 @@ export const ArtistsListPage = () => {
     const isLoading = useSelector(getArtistsListIsLoading)
     const error = useSelector(getArtistsListError)
 
-    useEffect(() => {
+    const fetchData = useCallback(() => {
         dispatch(fetchArtists());
-        dispatch(artistsListActions.setPage(1))
-    }, [dispatch, search]);
+    }, [dispatch]);
+
+    const debouncedFetch = useDebounce(fetchData, 1000)
+
+    useEffect(() => {
+        // @ts-ignore
+        debouncedFetch()
+    }, [debouncedFetch, search])
 
 
     if (isLoading) {
-        return <Loading />
+        return (
+            <HStack max justify="center">
+                <Loading />
+            </HStack>
+        )
     }
 
     return (
-        <>
+        <VStack align="center" gap="30">
             <h1>{pageTitle}</h1>
             {artists.length
                 ? <ArtistsList artists={artists} />
                 : error && <p>{error}</p>
             }
-        </>
+        </VStack>
     )
 }

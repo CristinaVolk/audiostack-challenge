@@ -3,8 +3,8 @@ import {Outlet} from "react-router";
 
 import {MainLayout} from "@/layouts/MainLayout";
 import {Navbar} from "@/widgets/Navbar";
-
 import {SearchArtists} from "@/features/SearchArtists";
+import {SideBar} from "@/widgets/Sidebar";
 
 
 export function App() {
@@ -12,7 +12,7 @@ export function App() {
           <MainLayout
               header={<Navbar />}
               content={<Outlet />}
-              sidebar={<h1>Navigation</h1>}
+              sidebar={<SideBar />}
               toolbar={<SearchArtists />}
           />
   );

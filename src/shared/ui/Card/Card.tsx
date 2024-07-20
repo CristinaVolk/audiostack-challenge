@@ -1,0 +1,53 @@
+import React, { HTMLAttributes, memo, ReactNode } from 'react';
+
+import { classNames } from '../../helpers/classNames';
+
+import classes from './Card.module.scss';
+
+
+export type CardPaddings = '0' | '8' | '16' | '24' | '36' | '48';
+export type CardBorder = 'smooth' | 'round' | 'normal';
+
+interface CardProps extends HTMLAttributes<HTMLDivElement> {
+    className?: string;
+    children?: ReactNode;
+    max?: boolean;
+    cardPaddings?: CardPaddings;
+    border?: CardBorder;
+}
+
+export const Card = memo((props: CardProps) => {
+    const {
+        className,
+        children,
+        max,
+        cardPaddings = '8',
+        border = 'normal',
+        ...otherProps
+    } = props;
+
+    const modes: Record<string, boolean | undefined> = {
+        [classes.max]: max,
+    };
+    const mapPaddingToClass: Record<CardPaddings, string> = {
+        '0': 'gap_0',
+        '8': 'gap_8',
+        '16': 'gap_16',
+        '24': 'gap_24',
+        '36': 'gap_36',
+        '48': 'gap_48',
+    };
+
+    return (
+        <div
+            className={classNames(classes.Card, modes, [
+                className,
+                classes[border],
+                classes[mapPaddingToClass[cardPaddings]],
+            ])}
+            {...otherProps}
+        >
+            {children}
+        </div>
+    );
+});
