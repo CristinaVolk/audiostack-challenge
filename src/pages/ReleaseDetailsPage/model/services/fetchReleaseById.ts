@@ -1,10 +1,9 @@
 import {AxiosResponse} from "axios";
 import {createAsyncThunk} from "@reduxjs/toolkit";
 
+import {ReleaseFullType} from "@/shared/types/Release";
 import type {ThunkConfig, ThunkExtraArg} from "@/app/providers/StoreProvider";
-import {$releases, $search} from "@/shared/api/endpoints";
-import {ReleaseFullType} from "@/pages/ReleaseDetailsPage/model/types/ReleaseDetailsPageSchema";
-import {AUTH_KEY, AUTH_SECRET} from "@/shared/api/config";
+import {$releases} from "@/shared/api/endpoints";
 
 
 export const fetchReleaseById = createAsyncThunk<

@@ -4,11 +4,12 @@ import {useSelector} from "react-redux";
 
 import {fetchReleaseById} from "../model/services/fetchReleaseById";
 import {getReleaseDetails, getReleaseDetailsIsLoading} from "../model/selectors/getReleaseDetailsPageSelector";
+import classes from "./ReleaseDetailsPage.module.scss";
 
 import {useAppDispatch} from "@/shared/hooks/useAppDispatch";
-import {ReleaseFullType} from "@/pages/ReleaseDetailsPage/model/types/ReleaseDetailsPageSchema";
 import {Loading} from "@/shared/ui/Loading/Loading";
-import {HStack} from "@/shared/ui/Stack";
+import {HStack, VStack} from "@/shared/ui/Stack";
+import {ReleaseFullDetails} from "@/entities/ReleaseFullDetails";
 
 
 export const ReleaseDetailsPage = () => {
@@ -17,9 +18,10 @@ export const ReleaseDetailsPage = () => {
     const release = useSelector(getReleaseDetails)
     const isLoading = useSelector(getReleaseDetailsIsLoading)
 
+
     useEffect(() => {
         dispatch(fetchReleaseById(id))
-    }, []);
+    }, [dispatch, id]);
 
     if (!id) {
         return null;
@@ -34,13 +36,8 @@ export const ReleaseDetailsPage = () => {
     }
 
     return (
-        <>
-            <h1>ReleaseDetailsPage {id}</h1>
-            {release &&
-            <div>
-                {release.title}
-            </div>
-            }
-        </>
+        <VStack max className={classes.ReleaseDetailsPage}>
+            {release && <ReleaseFullDetails release={release} />}
+        </VStack>
     )
 }

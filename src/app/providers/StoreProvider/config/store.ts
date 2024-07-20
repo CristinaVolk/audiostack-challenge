@@ -26,7 +26,6 @@ export function createReduxStore(
 
     const store = configureStore({
         reducer: rootReducer,
-        // @ts-ignore
         middleware: (getDefaultMiddleware) =>
             getDefaultMiddleware({
                 thunk: {

@@ -1,4 +1,4 @@
-import type {Artist} from "@/shared/types/Artist";
+import {ArtistsResponse} from "../types/ArtistsResponse";
 
 
 export interface ArtistsListPageSchema {
@@ -9,6 +9,6 @@ export interface ArtistsListPageSchema {
     page: number;
     limit?: number;
 
-    artists?: Artist[];
+    artistsData?: ArtistsResponse;
 }
 

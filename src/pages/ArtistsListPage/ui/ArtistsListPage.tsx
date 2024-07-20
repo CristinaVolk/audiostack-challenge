@@ -3,7 +3,12 @@ import {useLocation} from "react-router";
 import {useSelector} from "react-redux";
 
 import {artistsListPageActions} from "../model/slices/artistsListSlice";
-import {getArtistsList, getArtistsListError, getArtistsListIsLoading} from "../model/selectors/getArtistsListSelector";
+import {
+    getArtistsList,
+    getArtistsListError,
+    getArtistsListIsLoading, getArtistsListLimit,
+    getArtistsListPage
+} from "../model/selectors/getArtistsListSelector";
 import {fetchArtists} from "../model/services/fetchArtists";
 
 import {AppRouterByPathPattern} from "@/shared/consts/router";
@@ -13,6 +18,9 @@ import {Loading} from "@/shared/ui/Loading/Loading";
 import {ArtistsList} from "@/entities/ArtistsList";
 import {HStack, VStack} from "@/shared/ui/Stack";
 import {useDebounce} from "@/shared/hooks/useDebounce";
+import { ReactComponent as Arrow } from '@/shared/assets/icons/arrow-bottom.svg';
+import {classNames} from "@/shared/helpers/classNames";
+import classes from "./ArtistsListPage.module.scss";
 
 
 export const ArtistsListPage = () => {
@@ -23,6 +31,8 @@ export const ArtistsListPage = () => {
     const search = useSelector(getSearchTerm)
     const isLoading = useSelector(getArtistsListIsLoading)
     const error = useSelector(getArtistsListError)
+    const page = useSelector(getArtistsListPage)
+    const limit = useSelector(getArtistsListLimit)
 
     const fetchData = useCallback(() => {
         dispatch(fetchArtists());
@@ -31,9 +41,19 @@ export const ArtistsListPage = () => {
     const debouncedFetch = useDebounce(fetchData, 1000)
 
     useEffect(() => {
-        // @ts-ignore
         debouncedFetch()
-    }, [debouncedFetch, search])
+    }, [debouncedFetch, search, page])
+
+    const isUnderLimit = page <= 1
+    const isOverLimit = page >= limit
+
+    const paginateRight = () => {
+        dispatch(artistsListPageActions.setPage(page + 1))
+    }
+
+    const paginateLeft = () => {
+        dispatch(artistsListPageActions.setPage(page - 1))
+    }
 
 
     if (isLoading) {
@@ -47,9 +67,24 @@ export const ArtistsListPage = () => {
     return (
         <VStack align="center" gap="30">
             <h1>{pageTitle}</h1>
-            {artists.length
-                ? <ArtistsList artists={artists} />
-                : error && <p>{error}</p>
+            {
+                error
+                    ? <p>{error}</p>
+                    : artists.length &&
+                    <>
+                        <ArtistsList artists={artists} />
+                        <HStack className={classes.pagination} align="center">
+                            <Arrow
+                                onClick={paginateLeft}
+                                className={classNames(classes.arrowLeft, {[classes.hidden]: isUnderLimit}, [])}
+                            />
+                            <span>{page}</span>
+                            <Arrow
+                                onClick={paginateRight}
+                                className={classNames(classes.arrowRight, {[classes.hidden]: isOverLimit}, [])}
+                            />
+                        </HStack>
+                    </>
             }
         </VStack>
     )

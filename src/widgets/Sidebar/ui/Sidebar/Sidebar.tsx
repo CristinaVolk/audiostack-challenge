@@ -6,8 +6,7 @@ import classes from "./Sidebar.module.scss";
 
 import {VStack} from "@/shared/ui/Stack";
 import {classNames} from "@/shared/helpers/classNames";
-import {ImageComponent} from "@/shared/ui/ImageComponent/ImageComponent";
-import { ReactComponent as ToggleIcon } from '../../../../shared/assets/icons/arrow-bottom.svg';
+import { ReactComponent as ToggleIcon } from '@/shared/assets/icons/arrow-bottom.svg';
 
 
 interface SideBarProps {

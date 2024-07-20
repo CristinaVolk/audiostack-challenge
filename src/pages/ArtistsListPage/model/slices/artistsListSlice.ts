@@ -7,8 +7,8 @@ import {fetchArtists} from "../services/fetchArtists";
 const initialState: ArtistsListPageSchema = {
     isLoading: false,
     error: '',
-    artists: [],
-    page: 0,
+    artistsData: undefined,
+    page: 1,
     limit: 5,
 }
 
@@ -19,24 +19,21 @@ const artistsListSlice = createSlice({
         setPage: (state, action: PayloadAction<number>) => {
             state.page = action.payload
         },
-        setLimit: (state, action: PayloadAction<number>) => {
-            state.limit = action.payload
-        }
     },
     extraReducers: (builder) => {
         builder
             .addCase(fetchArtists.pending, (state) => {
-                state.error = '';
-                state.isLoading = true;
+                state.error = ''
+                state.isLoading = true
             })
             .addCase(fetchArtists.rejected, (state, action) => {
-                state.error = action.payload as string;
-                state.isLoading = false;
+                state.error = action.payload as string
+                state.isLoading = false
             })
             .addCase(fetchArtists.fulfilled, (state, action) => {
-                state.error = '';
-                state.artists = action.payload
-                state.isLoading = false;
+                state.error = ''
+                state.artistsData = action.payload
+                state.isLoading = false
             })
     },
 });

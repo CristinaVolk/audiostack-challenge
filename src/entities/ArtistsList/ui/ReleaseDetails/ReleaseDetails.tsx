@@ -13,7 +13,7 @@ interface ReleaseDetailsProps {
 
 export const ReleaseDetails = memo((props: ReleaseDetailsProps) => {
     const {release} = props
-    const {id, resource_url, title, year} = release
+    const { title, year} = release
 
     return (
         <NavLink
