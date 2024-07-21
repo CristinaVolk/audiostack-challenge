@@ -18,7 +18,6 @@ export const ReleaseFullDetails = (props: ReleaseFullDetails) => {
         title,
         year,
         artists,
-        released,
         country,
         genres,
         images,
@@ -45,7 +44,7 @@ export const ReleaseFullDetails = (props: ReleaseFullDetails) => {
 
     return (
         <VStack className={classes.ReleaseFullDetails} gap="20">
-            <h1>{title}</h1>
+            <h2><b>{title}</b></h2>
 
             <HStack max gap='30'>
                 {primaryImage?.uri && <ImageComponent {...primaryImageProps} /> }
