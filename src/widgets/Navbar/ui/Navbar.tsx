@@ -5,14 +5,14 @@ import classes from "./Navbar.module.scss";
 import {ImageComponent} from "@/shared/ui/ImageComponent/ImageComponent";
 import {classNames} from "@/shared/helpers/classNames";
 
-const imgSrc = `${process.env.PUBLIC_URL}/assets/images/navbar-cover.jpeg`
+import CoverImg from '@/shared/assets/images/navbar-cover.jpeg'
 
 export const Navbar = () => {
 
     return (
         <div className={classNames(classes.Navbar, {} , [])}>
             <ImageComponent
-                src={imgSrc}
+                src={CoverImg}
                 alt='navbar-cover'
             />
         </div>
