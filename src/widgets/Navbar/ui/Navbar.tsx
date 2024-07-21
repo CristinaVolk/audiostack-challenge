@@ -5,7 +5,7 @@ import classes from "./Navbar.module.scss";
 import {ImageComponent} from "@/shared/ui/ImageComponent/ImageComponent";
 import {classNames} from "@/shared/helpers/classNames";
 
-const imgSrc = 'assets/images/navbar-cover.jpeg'
+const imgSrc = `${process.env.PUBLIC_URL}/assets/images/navbar-cover.jpeg`
 
 export const Navbar = () => {
 
