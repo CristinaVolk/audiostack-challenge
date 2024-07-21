@@ -3,6 +3,7 @@ import { useLocation } from "react-router";
 
 
 import {AppRouterByPathPattern} from "@/shared/consts/router";
+import {VStack} from "@/shared/ui/Stack";
 
 
 export const AboutPage = () => {
@@ -10,8 +11,8 @@ export const AboutPage = () => {
     const pageTitle = AppRouterByPathPattern[pathname];
 
     return (
-        <>
-            <h1>{pageTitle}</h1>
+        <VStack max gap="30">
+            <h1><strong>{pageTitle}</strong></h1>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pulvinar mattis sem nec volutpat. Donec
                 nec urna est. Phasellus dapibus sapien at libero egestas consectetur. Sed eu eros arcu. Nulla a interdum
@@ -29,6 +30,6 @@ export const AboutPage = () => {
 
                 Generated 2 paragraphs, 163 words, 1092 bytes of Lorem Ipsum
             </p>
-        </>
+        </VStack>
     )
 }

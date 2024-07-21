@@ -12,6 +12,7 @@ import {
     getRouteArtistsListPage,
     getRouteReleaseDetailsPage
 } from "@/shared/consts/router";
+import {HomePage} from "@/pages/HomePage";
 
 
 export const router = createBrowserRouter([
@@ -19,6 +20,10 @@ export const router = createBrowserRouter([
         path: getRouteHome(),
         Component: App,
         children: [
+            {
+                path: getRouteHome(),
+                Component: HomePage,
+            },
             {
                 path: getRouteAboutPage(),
                 Component: AboutPage,

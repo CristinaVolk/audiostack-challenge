@@ -7,9 +7,8 @@ import classes from "./SearchArtists.module.scss";
 
 import {classNames} from "@/shared/helpers/classNames";
 import {useAppDispatch} from "@/shared/hooks/useAppDispatch";
-import {ImageComponent} from "@/shared/ui/ImageComponent/ImageComponent";
+import {ReactComponent as SearchIcon} from "@/shared/assets/icons/search.svg";
 
-const iconPath = 'assets/icons/search-icon-white.png'
 
 export const SearchArtists = memo(() => {
     const dispatch = useAppDispatch()
@@ -21,7 +20,7 @@ export const SearchArtists = memo(() => {
 
     return (
         <div className={classNames(classes.SearchArtists, {} , [])}>
-            <ImageComponent width={24} height={24} src={iconPath}/>
+            <SearchIcon width={24} height={24} />
             <input
                 className={classes.input}
                 onChange={onSearchChange}

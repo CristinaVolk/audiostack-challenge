@@ -9,6 +9,7 @@ import { $api } from '@/shared/api/api';
 import {searchArtistsReducer} from "@/features/SearchArtists";
 import {releaseDetailsPageReducer} from "@/pages/ReleaseDetailsPage";
 import {artistsListPageReducer} from "@/pages/ArtistsListPage";
+import {rtkApi} from "@/shared/api/rtkApi";
 
 
 export function createReduxStore(
@@ -17,7 +18,8 @@ export function createReduxStore(
     const rootReducer: ReducersMapObject<StateSchema> = {
         searchArtists: searchArtistsReducer,
         artistsListPage: artistsListPageReducer,
-        releaseDetailsPage: releaseDetailsPageReducer
+        releaseDetailsPage: releaseDetailsPageReducer,
+        [rtkApi.reducerPath]: rtkApi.reducer,
     };
 
     const extraThunk: ThunkExtraArg = {
@@ -26,12 +28,11 @@ export function createReduxStore(
 
     const store = configureStore({
         reducer: rootReducer,
+        preloadedState: initialState,
         middleware: (getDefaultMiddleware) =>
             getDefaultMiddleware({
-                thunk: {
-                    extraArgument: extraThunk,
-                },
-            }),
+                thunk: { extraArgument: extraThunk },
+            }).concat(rtkApi.middleware),
     })
 
     return store;

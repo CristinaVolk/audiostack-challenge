@@ -28,3 +28,10 @@
     right: 0;
   }
 }
+
+
+@media (width <= 860px) {
+  .SideBar {
+    width: 80px;
+  }
+}

@@ -16,7 +16,7 @@
     grid-area: sidebar;
     padding: 32px 0;
     max-width: 284px;
-    background: var(--sideNavBarHover);
+    background: var(--sideNavBar);
     box-shadow: var(--shadow-soft);
   }
 
@@ -27,6 +27,7 @@
     justify-self: center;
     padding: 32px;
     box-shadow: var(--shadow-soft);
+    overflow-y: scroll;
   }
 
   .rightbar {
@@ -34,6 +35,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    box-shadow: var(--shadow-soft);
   }
 
   .rightbar,
@@ -49,10 +51,16 @@
     display: flex;
     justify-content: center;
     padding: 15px 15px 20px;
-    background: var(--darkBackground);
+    background: var(--sideNavBar);
     box-shadow: var(--shadow-soft);
   }
+}
 
+@media (width <= 600px) {
+  .sidebar,
+  .rightbar {
+    width: 80px;
+  }
 }
 
 

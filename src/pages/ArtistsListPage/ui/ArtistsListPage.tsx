@@ -1,15 +1,12 @@
-import React, {useCallback, useEffect} from 'react'
+import React from 'react'
 import {useLocation} from "react-router";
 import {useSelector} from "react-redux";
 
 import {artistsListPageActions} from "../model/slices/artistsListSlice";
-import {
-    getArtistsList,
-    getArtistsListError,
-    getArtistsListIsLoading, getArtistsListLimit,
-    getArtistsListPage
-} from "../model/selectors/getArtistsListSelector";
-import {fetchArtists} from "../model/services/fetchArtists";
+import {getArtistsListLimit, getArtistsListPage} from "../model/selectors/getArtistsListSelector";
+import classes from "./ArtistsListPage.module.scss";
+import {useArtistsListPage} from "../model/api/artistsListPageApi";
+import {ParamsConfig} from "../model/types/ArtistsResponse";
 
 import {AppRouterByPathPattern} from "@/shared/consts/router";
 import {useAppDispatch} from "@/shared/hooks/useAppDispatch";
@@ -17,32 +14,38 @@ import {getSearchTerm} from "@/features/SearchArtists";
 import {Loading} from "@/shared/ui/Loading/Loading";
 import {ArtistsList} from "@/entities/ArtistsList";
 import {HStack, VStack} from "@/shared/ui/Stack";
-import {useDebounce} from "@/shared/hooks/useDebounce";
 import { ReactComponent as Arrow } from '@/shared/assets/icons/arrow-bottom.svg';
 import {classNames} from "@/shared/helpers/classNames";
-import classes from "./ArtistsListPage.module.scss";
 
 
 export const ArtistsListPage = () => {
     const {pathname} = useLocation()
     const pageTitle = AppRouterByPathPattern[pathname];
     const dispatch = useAppDispatch()
-    const artists = useSelector(getArtistsList)
     const search = useSelector(getSearchTerm)
-    const isLoading = useSelector(getArtistsListIsLoading)
-    const error = useSelector(getArtistsListError)
     const page = useSelector(getArtistsListPage)
     const limit = useSelector(getArtistsListLimit)
 
-    const fetchData = useCallback(() => {
-        dispatch(fetchArtists());
-    }, [dispatch]);
+    const paramsConfig: ParamsConfig = {
+        q: search,
+        page,
+        per_page: 5,
+        type: 'artist'
+    }
 
-    const debouncedFetch = useDebounce(fetchData, 1000)
+    const {
+        isLoading,
+        data: artistsData,
+        error,
+    }
+        = useArtistsListPage(paramsConfig, {
+            refetchOnMountOrArgChange: true,
+            skip: false,
+    })
 
-    useEffect(() => {
-        debouncedFetch()
-    }, [debouncedFetch, search, page])
+    if (artistsData) {
+        dispatch(artistsListPageActions.setLimit(artistsData?.pagination.pages))
+    }
 
     const isUnderLimit = page <= 1
     const isOverLimit = page >= limit
@@ -68,11 +71,11 @@ export const ArtistsListPage = () => {
         <VStack align="center" gap="30">
             <h1>{pageTitle}</h1>
             {
-                error
-                    ? <p>{error}</p>
-                    : artists.length &&
+                error && ('data' in error)
+                    ? <p>{JSON.stringify(error.data)}</p>
+                    : artistsData &&
                     <>
-                        <ArtistsList artists={artists} />
+                        <ArtistsList artists={artistsData.results} />
                         <HStack className={classes.pagination} align="center">
                             <Arrow
                                 onClick={paginateLeft}

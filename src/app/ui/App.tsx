@@ -3,8 +3,8 @@ import {Outlet} from "react-router";
 
 import {MainLayout} from "@/layouts/MainLayout";
 import {Navbar} from "@/widgets/Navbar";
-import {SearchArtists} from "@/features/SearchArtists";
 import {SideBar} from "@/widgets/Sidebar";
+import {SearchArtists} from "@/features/SearchArtists";
 
 
 export function App() {

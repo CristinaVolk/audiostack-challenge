@@ -4,7 +4,6 @@ import {useSelector} from "react-redux";
 
 import {fetchReleaseById} from "../model/services/fetchReleaseById";
 import {getReleaseDetails, getReleaseDetailsIsLoading} from "../model/selectors/getReleaseDetailsPageSelector";
-import classes from "./ReleaseDetailsPage.module.scss";
 
 import {useAppDispatch} from "@/shared/hooks/useAppDispatch";
 import {Loading} from "@/shared/ui/Loading/Loading";
@@ -17,7 +16,6 @@ export const ReleaseDetailsPage = () => {
     const dispatch = useAppDispatch()
     const release = useSelector(getReleaseDetails)
     const isLoading = useSelector(getReleaseDetailsIsLoading)
-
 
     useEffect(() => {
         dispatch(fetchReleaseById(id))
@@ -36,7 +34,7 @@ export const ReleaseDetailsPage = () => {
     }
 
     return (
-        <VStack max className={classes.ReleaseDetailsPage}>
+        <VStack max>
             {release && <ReleaseFullDetails release={release} />}
         </VStack>
     )

@@ -29,26 +29,17 @@
     padding: 48px;
 }
 
-.normal {
-    background: var(--dark-bg-redesigned);
-}
-
-.outlined {
-    border: 1px solid var(--accent-redesigned);
-}
-
-.light {
-    background: var(--light-bg-redesigned);
-}
-
 .smooth {
     border-radius: 12px;
+    box-shadow: var(--shadow-focused);
 }
 
 .round {
     border-radius: 40px;
+    box-shadow: var(--shadow-focused);
 }
 
 .normal {
     border-radius: 20px;
+    box-shadow: var(--shadow-focused);
 }

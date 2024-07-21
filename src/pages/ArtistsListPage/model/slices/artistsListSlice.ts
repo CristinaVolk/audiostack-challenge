@@ -1,7 +1,6 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
 import type {ArtistsListPageSchema} from "../types/ArtistsListPageSchema";
-import {fetchArtists} from "../services/fetchArtists";
 
 
 const initialState: ArtistsListPageSchema = {
@@ -9,7 +8,6 @@ const initialState: ArtistsListPageSchema = {
     error: '',
     artistsData: undefined,
     page: 1,
-    limit: 5,
 }
 
 const artistsListSlice = createSlice({
@@ -19,22 +17,9 @@ const artistsListSlice = createSlice({
         setPage: (state, action: PayloadAction<number>) => {
             state.page = action.payload
         },
-    },
-    extraReducers: (builder) => {
-        builder
-            .addCase(fetchArtists.pending, (state) => {
-                state.error = ''
-                state.isLoading = true
-            })
-            .addCase(fetchArtists.rejected, (state, action) => {
-                state.error = action.payload as string
-                state.isLoading = false
-            })
-            .addCase(fetchArtists.fulfilled, (state, action) => {
-                state.error = ''
-                state.artistsData = action.payload
-                state.isLoading = false
-            })
+        setLimit: (state, action: PayloadAction<number>) => {
+            state.limit = action.payload
+        },
     },
 });
 

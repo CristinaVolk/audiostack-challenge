@@ -6,5 +6,12 @@ export interface ArtistsResponse {
     results:    Artist[];
 }
 
+export interface ParamsConfig {
+    q: string,
+    type: string,
+    per_page: number,
+    page: number,
+}
+
 
 
