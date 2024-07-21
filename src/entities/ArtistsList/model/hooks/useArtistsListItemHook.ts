@@ -6,6 +6,7 @@ import {ReleaseResponse} from "../types/ReleaseResponse";
 import {$artists} from "@/shared/api/endpoints";
 import {$api} from "@/shared/api/api";
 import {Release} from "@/shared/types/Release";
+import {AUTH_KEY, AUTH_SECRET} from "@/shared/api/config";
 
 export const useArtistsListItemHook = (artistId: number) => {
     const [error, setError] = useState<string>('')
@@ -18,7 +19,7 @@ export const useArtistsListItemHook = (artistId: number) => {
                 setIsLoading(true)
 
                 const response: AxiosResponse<ReleaseResponse> =
-                    await $api.get(`${$artists}/${artistId}/releases`, {
+                    await $api.get(`${$artists}/${artistId}/releases?key=${AUTH_KEY}&secret=${AUTH_SECRET}`, {
                             params: {
                                 per_page: 5,
                             }

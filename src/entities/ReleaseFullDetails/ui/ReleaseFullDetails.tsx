@@ -46,12 +46,12 @@ export const ReleaseFullDetails = (props: ReleaseFullDetails) => {
         <VStack className={classes.ReleaseFullDetails} gap="20">
             <h2><b>{title}</b></h2>
 
-            <HStack max gap='30'>
+            <HStack max gap="30">
                 {primaryImage?.uri && <ImageComponent {...primaryImageProps} /> }
                 {secondaryImage?.uri && <ImageComponent {...secondaryImageProps} /> }
             </HStack>
 
-            <Card max border='smooth' cardPaddings="16">
+            <Card max border="smooth" cardPaddings="16">
                 <VStack gap="15">
                     <p><b>Date released:</b> {year} </p>
                     <span><b>Country:</b> {country}</span>

@@ -1,3 +1,5 @@
+@import "@/app/styles/variables/global";
+
 .item {
   display: flex;
   align-items: center;
@@ -24,6 +26,14 @@
     width: 0;
   }
 }
+
+@media (width <= $mq-mobile) {
+  h2 {
+    font-size: larger;
+  }
+}
+
+
 
 
 
