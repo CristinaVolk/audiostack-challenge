@@ -1,7 +1,8 @@
 import {useEffect, useState} from "react";
 import {AxiosResponse} from "axios";
 
-import {ReleaseResponse} from "@/entities/ArtistsList/model/types/ReleaseResponse";
+import {ReleaseResponse} from "../types/ReleaseResponse";
+
 import {$artists} from "@/shared/api/endpoints";
 import {$api} from "@/shared/api/api";
 import {Release} from "@/shared/types/Release";

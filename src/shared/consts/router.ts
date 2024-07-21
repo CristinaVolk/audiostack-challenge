@@ -1,4 +1,4 @@
-import {AppRoutes} from "../types/router";
+import {AppRoutes} from "../types/Router";
 
 export const getRouteHome = () => '/'
 export const getRouteArtistsListPage = () => '/artists'

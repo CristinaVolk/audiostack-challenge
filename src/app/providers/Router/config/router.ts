@@ -5,14 +5,13 @@ import {App} from "../../../ui/App";
 import {ArtistsListPage} from "@/pages/ArtistsListPage";
 import {AboutPage} from "@/pages/AboutPage";
 import {ReleaseDetailsPage} from "@/pages/ReleaseDetailsPage";
-
+import {HomePage} from "@/pages/HomePage";
 import {
     getRouteAboutPage,
     getRouteHome,
     getRouteArtistsListPage,
     getRouteReleaseDetailsPage
 } from "@/shared/consts/router";
-import {HomePage} from "@/pages/HomePage";
 
 
 export const router = createBrowserRouter([

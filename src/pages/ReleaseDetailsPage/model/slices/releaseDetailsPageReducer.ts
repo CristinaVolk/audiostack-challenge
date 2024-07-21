@@ -34,5 +34,4 @@ const releaseDetailsPageSlice = createSlice({
 
 export const {
     reducer: releaseDetailsPageReducer,
-    actions: releaseDetailsPageActions,
 } = releaseDetailsPageSlice

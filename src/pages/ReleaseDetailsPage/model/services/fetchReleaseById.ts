@@ -1,8 +1,8 @@
 import {AxiosResponse} from "axios";
 import {createAsyncThunk} from "@reduxjs/toolkit";
 
-import {ReleaseFullType} from "@/shared/types/Release";
 import type {ThunkConfig, ThunkExtraArg} from "@/app/providers/StoreProvider";
+import {ReleaseFullType} from "@/shared/types/Release";
 import {$releases} from "@/shared/api/endpoints";
 
 

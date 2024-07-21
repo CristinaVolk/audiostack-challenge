@@ -16,6 +16,7 @@ import {ArtistsList} from "@/entities/ArtistsList";
 import {HStack, VStack} from "@/shared/ui/Stack";
 import { ReactComponent as Arrow } from '@/shared/assets/icons/arrow-bottom.svg';
 import {classNames} from "@/shared/helpers/classNames";
+import {Error} from '@/shared/ui/Error/Error'
 
 
 export const ArtistsListPage = () => {
@@ -65,32 +66,34 @@ export const ArtistsListPage = () => {
     return (
         <VStack align="center" gap="30">
             <h1>{pageTitle}</h1>
-            {
-                error && ('data' in error)
-                    ? <p>{JSON.stringify(error.data)}</p>
-                    : artistsData &&
-                    <>
-                        <ArtistsList artists={artistsData.results} />
-                        <HStack className={classes.pagination} align="center">
-                            <Arrow
-                                onClick={paginateLeft}
-                                className={classNames(
-                                    classes.arrowLeft,
-                                    {[classes.hidden]: isUnderLimit},
-                                    []
-                                )}
-                            />
-                            <span>{page}</span>
-                            <Arrow
-                                onClick={paginateRight}
-                                className={classNames(
-                                    classes.arrowRight,
-                                    {[classes.hidden]: isOverLimit},
-                                    []
-                                )}
-                            />
-                        </HStack>
-                    </>
+
+            {error && ('data' in error)
+                    && <Error message={JSON.stringify(error.data)} />
+            }
+
+            {artistsData &&
+                <>
+                    <ArtistsList artists={artistsData.results} />
+                    <HStack className={classes.pagination} align="center">
+                        <Arrow
+                            onClick={paginateLeft}
+                            className={classNames(
+                                classes.arrowLeft,
+                                {[classes.hidden]: isUnderLimit},
+                                []
+                            )}
+                        />
+                        <span>{page}</span>
+                        <Arrow
+                            onClick={paginateRight}
+                            className={classNames(
+                                classes.arrowRight,
+                                {[classes.hidden]: isOverLimit},
+                                []
+                            )}
+                        />
+                    </HStack>
+                </>
             }
         </VStack>
     )
