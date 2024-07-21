@@ -3,6 +3,7 @@ import React, { ReactNode} from 'react';
 import classes from './Dropdown.module.scss';
 import popupClasses from './popup.module.scss';
 import {classNames} from "../../helpers/classNames";
+import {VStack} from "@/shared/ui/Stack";
 
 type DropdownDirection =
     | 'top'
@@ -51,7 +52,7 @@ export const Dropdown = (props: DropdownProps) => {
             </button>
 
             {customOpen && (
-                <ul
+                <VStack max align='center'
                     className={classNames(classes.menu, {[classes.open]: customOpen}, [...menuClasses])}
                 >
                     {items.map((item) => {
@@ -62,12 +63,12 @@ export const Dropdown = (props: DropdownProps) => {
                         );
 
                         return (
-                            <li key={item.id}>
+                            <div key={item.id} onClick={buttonClicked}>
                                 {content}
-                            </li>
+                            </div>
                         );
                     })}
-                </ul>
+                </VStack>
             )}
         </div>
     );

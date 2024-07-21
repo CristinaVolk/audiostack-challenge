@@ -8,6 +8,7 @@ import classes from "./SearchArtists.module.scss";
 import {classNames} from "@/shared/helpers/classNames";
 import {useAppDispatch} from "@/shared/hooks/useAppDispatch";
 import {ReactComponent as SearchIcon} from "@/shared/assets/icons/search.svg";
+import {HStack} from "@/shared/ui/Stack";
 
 
 export const SearchArtists = memo(() => {
@@ -19,7 +20,7 @@ export const SearchArtists = memo(() => {
     },[dispatch])
 
     return (
-        <div className={classNames(classes.SearchArtists, {} , [])}>
+        <HStack align='center' max className={classNames(classes.SearchArtists, {} , [])}>
             <SearchIcon width={24} height={24} />
             <input
                 className={classes.input}
@@ -27,6 +28,6 @@ export const SearchArtists = memo(() => {
                 value={search}
                 placeholder="Search for an artist"
             />
-        </div>
+        </HStack>
     )
 })

@@ -8,9 +8,3 @@ body {
 
   background: var(--background-main);
 }
-
-@media (width <= 500px) {
-  body {
-    width: fit-content;
-  }
-}

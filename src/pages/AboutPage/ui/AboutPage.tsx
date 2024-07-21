@@ -11,8 +11,8 @@ export const AboutPage = () => {
     const pageTitle = AppRouterByPathPattern[pathname];
 
     return (
-        <VStack max gap="30">
-            <h1><strong>{pageTitle}</strong></h1>
+        <VStack max gap="30" align='center'>
+            <h1>{pageTitle}</h1>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pulvinar mattis sem nec volutpat. Donec
                 nec urna est. Phasellus dapibus sapien at libero egestas consectetur. Sed eu eros arcu. Nulla a interdum

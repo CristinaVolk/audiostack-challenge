@@ -3,10 +3,10 @@ import {useLocation} from "react-router";
 import {useSelector} from "react-redux";
 
 import {artistsListPageActions} from "../model/slices/artistsListSlice";
-import {getArtistsListLimit, getArtistsListPage} from "../model/selectors/getArtistsListSelector";
-import classes from "./ArtistsListPage.module.scss";
+import {getArtistsListPage} from "../model/selectors/getArtistsListSelector";
 import {useArtistsListPage} from "../model/api/artistsListPageApi";
 import {ParamsConfig} from "../model/types/ArtistsResponse";
+import classes from "./ArtistsListPage.module.scss";
 
 import {AppRouterByPathPattern} from "@/shared/consts/router";
 import {useAppDispatch} from "@/shared/hooks/useAppDispatch";
@@ -24,7 +24,6 @@ export const ArtistsListPage = () => {
     const dispatch = useAppDispatch()
     const search = useSelector(getSearchTerm)
     const page = useSelector(getArtistsListPage)
-    const limit = useSelector(getArtistsListLimit)
 
     const paramsConfig: ParamsConfig = {
         q: search,
@@ -43,12 +42,8 @@ export const ArtistsListPage = () => {
             skip: false,
     })
 
-    if (artistsData) {
-        dispatch(artistsListPageActions.setLimit(artistsData?.pagination.pages))
-    }
-
     const isUnderLimit = page <= 1
-    const isOverLimit = page >= limit
+    const isOverLimit = page >= artistsData?.pagination.pages
 
     const paginateRight = () => {
         dispatch(artistsListPageActions.setPage(page + 1))
@@ -79,12 +74,20 @@ export const ArtistsListPage = () => {
                         <HStack className={classes.pagination} align="center">
                             <Arrow
                                 onClick={paginateLeft}
-                                className={classNames(classes.arrowLeft, {[classes.hidden]: isUnderLimit}, [])}
+                                className={classNames(
+                                    classes.arrowLeft,
+                                    {[classes.hidden]: isUnderLimit},
+                                    []
+                                )}
                             />
                             <span>{page}</span>
                             <Arrow
                                 onClick={paginateRight}
-                                className={classNames(classes.arrowRight, {[classes.hidden]: isOverLimit}, [])}
+                                className={classNames(
+                                    classes.arrowRight,
+                                    {[classes.hidden]: isOverLimit},
+                                    []
+                                )}
                             />
                         </HStack>
                     </>

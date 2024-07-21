@@ -1,6 +1,5 @@
 import React, {memo} from "react";
 
-import classes from "./ArtistsList.module.scss";
 import {ArtistsListItem} from "../ArtistsListItem/ArtistsListItem";
 
 import {Artist} from "@/shared/types/Artist";
@@ -15,7 +14,7 @@ export const ArtistsList = memo((props: ArtistsListProps) => {
     const {artists} = props
 
     return (
-        <VStack className={classes.listContainer} gap="25">
+        <VStack gap="25" max>
             {
                 artists.length && artists.map(artist => (
                     <ArtistsListItem key={artist.id} artist={artist} />

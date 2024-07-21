@@ -17,6 +17,8 @@
         min-height: 95vh;
         background: var(--sideNavBar);
         opacity: 0.98;
+        border-radius: 6px;
+        box-shadow: var(--shadow-focused);
 
         &.open {
             animation: fade-in 1s linear;
@@ -31,13 +33,15 @@
         cursor: pointer;
         color: var(--lightBackground);
 
-        &.active {
-            background: var(--primaryColor);
+        &:first-child {
+            margin-top: 30px;
+        }
+
+        &:not(:first-child) {
+            padding: 15px 0;
         }
     }
-    .menuNavLink:not(:first-child) {
-        padding: 15px 0;
-    }
+
 }
 
 @keyframes fade-in {

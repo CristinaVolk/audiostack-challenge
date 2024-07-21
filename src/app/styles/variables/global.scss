@@ -1,3 +1,6 @@
+$mq-mobile: 768px;
+$mq-desktop: 1680px;
+
 :root {
   // Fonts
   --font-family-main:  ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
@@ -20,5 +23,8 @@
   --shadow-focused: 0px 8px 48px 0;
 
   // z-index
-  --sidebar-z-index: 10
+  --sidebar-z-index: 10;
+
+  // screen
+  --mobile: 768px;
 }

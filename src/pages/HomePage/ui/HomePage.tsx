@@ -11,8 +11,8 @@ export const HomePage = () => {
     const pageTitle = AppRouterByPathPattern[pathname];
 
     return (
-        <VStack max gap="30">
-            <h1><strong>{pageTitle}</strong></h1>
+        <VStack max gap="30" align='center'>
+            <h1>{pageTitle}</h1>
             <p>
                 Hello, this is the Home Page. Here, something really exciting should be displayed
                 about the Artists website. It is coming ... ;)

@@ -1,7 +1,17 @@
-.MainLayout {
+@import "@/app/styles/variables/global";
 
+.MainLayout {
   .header {
     height: 35vh;
+    border-radius: 6px;
+
+    @media (width <= $mq-mobile) {
+      & {
+        background: var(--sideNavBar);
+        box-shadow: var(--shadow-soft);
+        height: 15vh;
+      }
+    }
   }
 
   .contentLayout {
@@ -10,6 +20,12 @@
     grid-template-areas:
             'sidebar content rightbar';
     grid-template-columns: min-content 1fr 0.4fr;
+
+    @media (width <= $mq-mobile) {
+      & {
+        grid-template-columns: min-content 1fr min-content;
+      }
+    }
   }
 
   .sidebar {
@@ -18,6 +34,13 @@
     max-width: 284px;
     background: var(--sideNavBar);
     box-shadow: var(--shadow-soft);
+    border-radius: 6px;
+
+    @media (width <= $mq-mobile) {
+      & {
+        max-width: 80px;
+      }
+    }
   }
 
   .content {
@@ -28,7 +51,9 @@
     padding: 32px;
     box-shadow: var(--shadow-soft);
     overflow-y: scroll;
+    border-radius: 6px;
   }
+
 
   .rightbar {
     grid-area: rightbar;
@@ -43,6 +68,8 @@
     position: sticky;
     top: 0;
     height: 100vh;
+    min-width: 100%;
+    border-radius: 6px;
   }
 
   .toolbar {
@@ -53,16 +80,12 @@
     padding: 15px 15px 20px;
     background: var(--sideNavBar);
     box-shadow: var(--shadow-soft);
+    border-radius: 6px;
+
+    @media (width <= $mq-mobile) {
+      & {
+        max-width: 50px;
+      }
+    }
   }
 }
-
-@media (width <= 600px) {
-  .sidebar,
-  .rightbar {
-    width: 80px;
-  }
-}
-
-
-
-
