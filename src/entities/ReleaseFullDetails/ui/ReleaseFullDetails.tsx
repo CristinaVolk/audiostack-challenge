@@ -8,7 +8,6 @@ import { ReleaseFullType } from "@/shared/types/Release"
 import { HStack, VStack } from "@/shared/ui/Stack"
 import { Card } from "@/shared/ui/Card/Card"
 
-
 interface ReleaseFullDetails {
     release: ReleaseFullType
 }
@@ -82,7 +81,7 @@ export const ReleaseFullDetails = (props: ReleaseFullDetails) => {
                     max
                     key={video.uri}
                     border="smooth"
-                    className={classes.cardDetails}
+                    className={classes.videoDetails}
                 >
                     <VStack gap="10">
                         <h3>

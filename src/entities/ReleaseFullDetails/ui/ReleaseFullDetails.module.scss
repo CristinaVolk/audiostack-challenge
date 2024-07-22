@@ -9,8 +9,19 @@
   }
 
   @media (width <= $mq-mobile) {
-    .cardDetails {
+    .cardDetails,
+    .videoDetails {
       min-width: 40%;
+      width: 90%;
+    }
+
+    .videoDetails {
+      h4 {
+        font-size: 3vw;
+      }
+      p {
+        font-size:2vw;
+      }
     }
   }
 }
