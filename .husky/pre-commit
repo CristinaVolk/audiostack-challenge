@@ -1,0 +1,4 @@
+# .husky/pre-commit
+
+yarn run build
+yarn run lint:ts
