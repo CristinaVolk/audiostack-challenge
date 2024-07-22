@@ -1,23 +1,20 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
-import {SearchArtistsSchema} from "../types/SearchArtistsSchema";
-
+import { SearchArtistsSchema } from "../types/SearchArtistsSchema"
 
 const initialState: SearchArtistsSchema = {
-    search: ''
+    search: "",
 }
 
 const searchArtistsSlice = createSlice({
-    name: 'searchReleasesSlice',
+    name: "searchReleasesSlice",
     initialState,
     reducers: {
         setSearch: (state, action: PayloadAction<string>) => {
             state.search = action.payload
-        }
+        },
     },
-});
+})
 
-export const {
-    reducer: searchArtistsReducer,
-    actions: searchArtistsActions,
-} = searchArtistsSlice;
+export const { reducer: searchArtistsReducer, actions: searchArtistsActions } =
+    searchArtistsSlice

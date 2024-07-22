@@ -1,3 +1,3 @@
 export interface SearchArtistsSchema {
-    search: string;
+    search: string
 }

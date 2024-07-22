@@ -1,9 +1,8 @@
-import {rtkApi} from "@/shared/api/rtkApi";
+import { rtkApi } from "@/shared/api/rtkApi"
 
-import {ArtistsResponse, ParamsConfig} from "../types/ArtistsResponse";
-import {$search} from "@/shared/api/endpoints";
-import {AUTH_KEY, AUTH_SECRET} from "@/shared/api/config";
-
+import { ArtistsResponse, ParamsConfig } from "../types/ArtistsResponse"
+import { $search } from "@/shared/api/endpoints"
+import { AUTH_KEY, AUTH_SECRET } from "@/shared/api/config"
 
 export const artistsListPageApi = rtkApi.injectEndpoints({
     endpoints: (build) => ({
@@ -11,9 +10,9 @@ export const artistsListPageApi = rtkApi.injectEndpoints({
             query: (arg: ParamsConfig) => ({
                 url: `${$search}?key=${AUTH_KEY}&secret=${AUTH_SECRET}`,
                 params: arg,
-            })
+            }),
         }),
-    })
-    })
+    }),
+})
 
-export const useArtistsListPage = artistsListPageApi.useGetArtistsListQuery;
+export const useArtistsListPage = artistsListPageApi.useGetArtistsListQuery

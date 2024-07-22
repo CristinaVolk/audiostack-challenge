@@ -1,17 +1,16 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
-import type {ArtistsListPageSchema} from "../types/ArtistsListPageSchema";
-
+import type { ArtistsListPageSchema } from "../types/ArtistsListPageSchema"
 
 const initialState: ArtistsListPageSchema = {
     isLoading: false,
-    error: '',
+    error: "",
     artistsData: undefined,
     page: 1,
 }
 
 const artistsListSlice = createSlice({
-    name: 'artistsListSlice',
+    name: "artistsListSlice",
     initialState,
     reducers: {
         setPage: (state, action: PayloadAction<number>) => {
@@ -21,7 +20,7 @@ const artistsListSlice = createSlice({
             state.limit = action.payload
         },
     },
-});
+})
 
 export const {
     reducer: artistsListPageReducer,

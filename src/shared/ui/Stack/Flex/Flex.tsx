@@ -1,29 +1,28 @@
-import React, { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react';
+import React, { DetailedHTMLProps, HTMLAttributes, ReactNode } from "react"
 
-import classes from './Flex.module.scss';
-import {classNames} from "../../../helpers/classNames";
+import classes from "./Flex.module.scss"
+import { classNames } from "../../../helpers/classNames"
 
-
-type FlexJustify = 'start' | 'center' | 'end' | 'between';
-type FlexAlign = 'start' | 'center' | 'end';
-type FlexWrap = 'wrap' | 'nowpap';
-export type FlexDirection = 'row' | 'column';
-type FlexGap = '5' | '10' | '15' | '20' | '25' | '30';
+type FlexJustify = "start" | "center" | "end" | "between"
+type FlexAlign = "start" | "center" | "end"
+type FlexWrap = "wrap" | "nowpap"
+export type FlexDirection = "row" | "column"
+type FlexGap = "5" | "10" | "15" | "20" | "25" | "30"
 
 type DivProps = DetailedHTMLProps<
     HTMLAttributes<HTMLDivElement>,
     HTMLDivElement
->;
+>
 
 export interface FlexProps extends DivProps {
-    className?: string;
-    children?: ReactNode;
-    justify?: FlexJustify;
-    align?: FlexAlign;
-    direction: FlexDirection;
-    gap?: FlexGap;
-    max?: boolean;
-    wrap?: FlexWrap;
+    className?: string
+    children?: ReactNode
+    justify?: FlexJustify
+    align?: FlexAlign
+    direction: FlexDirection
+    gap?: FlexGap
+    max?: boolean
+    wrap?: FlexWrap
 }
 
 const justifyClasses: Record<FlexJustify, string> = {
@@ -31,18 +30,18 @@ const justifyClasses: Record<FlexJustify, string> = {
     end: classes.justifyEnd,
     center: classes.justifyCenter,
     between: classes.justifyBetween,
-};
+}
 
 const alignClasses: Record<FlexAlign, string> = {
     start: classes.alignStart,
     end: classes.alignEnd,
     center: classes.alignCenter,
-};
+}
 
 const directionClasses: Record<FlexDirection, string> = {
     row: classes.directionRow,
     column: classes.directionColumn,
-};
+}
 
 const gapClasses: Record<FlexGap, string> = {
     5: classes.gap5,
@@ -51,20 +50,20 @@ const gapClasses: Record<FlexGap, string> = {
     20: classes.gap20,
     25: classes.gap25,
     30: classes.gap30,
-};
+}
 
 export const Flex = (props: FlexProps) => {
     const {
         className,
         children,
-        justify = 'start',
-        align = 'center',
-        direction = 'row',
+        justify = "start",
+        align = "center",
+        direction = "row",
         gap,
         max,
-        wrap = 'nowrap',
+        wrap = "nowrap",
         ...restProps
-    } = props;
+    } = props
 
     const flexClasses = [
         className,
@@ -73,11 +72,11 @@ export const Flex = (props: FlexProps) => {
         directionClasses[direction],
         gap && gapClasses[gap],
         classes[wrap],
-    ];
+    ]
 
     const modes = {
         [classes.max]: max,
-    };
+    }
 
     return (
         <div
@@ -86,5 +85,5 @@ export const Flex = (props: FlexProps) => {
         >
             {children}
         </div>
-    );
-};
+    )
+}

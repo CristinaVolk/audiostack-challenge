@@ -1,4 +1,4 @@
 export interface SideBarItemType {
-    path: string;
-    text: string;
+    path: string
+    text: string
 }

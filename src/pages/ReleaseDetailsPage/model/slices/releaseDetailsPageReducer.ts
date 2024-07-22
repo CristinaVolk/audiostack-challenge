@@ -1,37 +1,34 @@
-import {createSlice} from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit"
 
-import {fetchReleaseById} from "../services/fetchReleaseById";
-import {ReleaseDetailsPageSchema} from "../types/ReleaseDetailsPageSchema";
-
+import { fetchReleaseById } from "../services/fetchReleaseById"
+import { ReleaseDetailsPageSchema } from "../types/ReleaseDetailsPageSchema"
 
 const initialState: ReleaseDetailsPageSchema = {
     isLoading: false,
-    error: '',
-    release: undefined
+    error: "",
+    release: undefined,
 }
 
 const releaseDetailsPageSlice = createSlice({
-    name: 'releaseDetailsPageSlice',
+    name: "releaseDetailsPageSlice",
     initialState,
     reducers: {},
     extraReducers: (builder) => {
         builder
             .addCase(fetchReleaseById.pending, (state) => {
-                state.error = '';
-                state.isLoading = true;
+                state.error = ""
+                state.isLoading = true
             })
             .addCase(fetchReleaseById.rejected, (state, action) => {
-                state.error = action.payload as string;
-                state.isLoading = false;
+                state.error = action.payload as string
+                state.isLoading = false
             })
             .addCase(fetchReleaseById.fulfilled, (state, action) => {
-                state.error = '';
+                state.error = ""
                 state.release = action.payload
-                state.isLoading = false;
+                state.isLoading = false
             })
     },
-});
+})
 
-export const {
-    reducer: releaseDetailsPageReducer,
-} = releaseDetailsPageSlice
+export const { reducer: releaseDetailsPageReducer } = releaseDetailsPageSlice

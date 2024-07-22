@@ -4,6 +4,9 @@
 
   .refresh {
     border: none;
-    background: transparent;
+    background: var(--lightBackground);
+    box-shadow: var(--shadow-focused);
+    padding: 10px 20px;
+    border-radius: 8px;
   }
 }

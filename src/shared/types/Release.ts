@@ -1,15 +1,15 @@
-import {Artist} from "@/shared/types/Artist";
+import { Artist } from "@/shared/types/Artist"
 
 export interface Release {
-    artist:       string;
-    id:           number;
-    main_release: number;
-    resource_url: string;
-    role:         string;
-    thumb:        string;
-    title:        string;
-    type:         string;
-    year:         number;
+    artist: string
+    id: number
+    main_release: number
+    resource_url: string
+    role: string
+    thumb: string
+    title: string
+    type: string
+    year: number
 }
 
 export interface ReleaseFullType {
@@ -39,7 +39,7 @@ export interface ReleaseFullType {
     released: string
     released_formatted: string
     resource_url: string
-    series: any[]
+    series: unknown[]
     status: string
     styles: string[]
     tracklist: Tracklist[]

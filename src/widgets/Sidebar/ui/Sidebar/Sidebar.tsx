@@ -1,32 +1,29 @@
-import React, { memo, useMemo, useState } from 'react';
-import {BrowserView, MobileView} from 'react-device-detect'
+import React, { memo, useMemo, useState } from "react"
+import { BrowserView, MobileView } from "react-device-detect"
 
-import {SideBarItem} from "../SidebarItem/SidebarItem";
-import {useSideBarItems} from "../../model/selectors/getSideBarItems";
-import classes from "./Sidebar.module.scss";
+import { SideBarItem } from "../SidebarItem/SidebarItem"
+import { useSideBarItems } from "../../model/selectors/getSideBarItems"
+import classes from "./Sidebar.module.scss"
 
-import {VStack} from "@/shared/ui/Stack";
-import {classNames} from "@/shared/helpers/classNames";
-import { ReactComponent as ToggleIcon } from '@/shared/assets/icons/arrow-bottom.svg';
-import {Dropdown} from "@/shared/ui/Dropdown/Dropdown";
-import {ReactComponent as MenuIcon} from "@/shared/assets/icons/hamburger.svg";
-
-
+import { VStack } from "@/shared/ui/Stack"
+import { classNames } from "@/shared/helpers/classNames"
+import { ReactComponent as ToggleIcon } from "@/shared/assets/icons/arrow-bottom.svg"
+import { Dropdown } from "@/shared/ui/Dropdown/Dropdown"
+import { ReactComponent as MenuIcon } from "@/shared/assets/icons/hamburger.svg"
 
 interface SideBarProps {
-    className?: string;
+    className?: string
 }
 
 export const SideBar = memo(({ className }: SideBarProps) => {
-    const [collapsed, setCollapsed] = useState<boolean>(false);
-    const [open, setOpen] = useState<boolean>(false);
-
+    const [collapsed, setCollapsed] = useState<boolean>(false)
+    const [open, setOpen] = useState<boolean>(false)
 
     const onToggle = () => {
-        setCollapsed((prevState) => !prevState);
-    };
+        setCollapsed((prevState) => !prevState)
+    }
 
-    const sideBarItemsList = useSideBarItems();
+    const sideBarItemsList = useSideBarItems()
 
     const itemsList = useMemo(
         () =>
@@ -37,15 +34,15 @@ export const SideBar = memo(({ className }: SideBarProps) => {
                     collapsed={collapsed}
                 />
             )),
-        [collapsed, sideBarItemsList],
-    );
+        [collapsed, sideBarItemsList]
+    )
 
     return (
         <aside
             className={classNames(
                 classes.SideBar,
                 { [classes.collapsed]: collapsed },
-                [className],
+                [className]
             )}
         >
             <BrowserView>
@@ -65,16 +62,16 @@ export const SideBar = memo(({ className }: SideBarProps) => {
 
             <MobileView>
                 <Dropdown
-                    items={
-                        itemsList
-                            .map(((item, index) => ({id: index, content: item})))
-                    }
+                    items={itemsList.map((item, index) => ({
+                        id: index,
+                        content: item,
+                    }))}
                     trigger={<MenuIcon />}
-                    direction='bottomRight'
+                    direction="bottomRight"
                     customOpen={open}
-                    onTriggerClick={() => setOpen(prev => !prev)}
+                    onTriggerClick={() => setOpen((prev) => !prev)}
                 />
             </MobileView>
         </aside>
-    );
-});
+    )
+})

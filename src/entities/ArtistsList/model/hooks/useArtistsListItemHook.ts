@@ -1,15 +1,15 @@
-import {useEffect, useState} from "react";
-import {AxiosResponse} from "axios";
+import { useEffect, useState } from "react"
+import { AxiosResponse } from "axios"
 
-import {ReleaseResponse} from "../types/ReleaseResponse";
+import { ReleaseResponse } from "../types/ReleaseResponse"
 
-import {$artists} from "@/shared/api/endpoints";
-import {$api} from "@/shared/api/api";
-import {Release} from "@/shared/types/Release";
-import {AUTH_KEY, AUTH_SECRET} from "@/shared/api/config";
+import { $artists } from "@/shared/api/endpoints"
+import { $api } from "@/shared/api/api"
+import { Release } from "@/shared/types/Release"
+import { AUTH_KEY, AUTH_SECRET } from "@/shared/api/config"
 
 export const useArtistsListItemHook = (artistId: number) => {
-    const [error, setError] = useState<string>('')
+    const [error, setError] = useState<string>("")
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [releases, setReleases] = useState<Release[]>([])
 
@@ -18,31 +18,30 @@ export const useArtistsListItemHook = (artistId: number) => {
             try {
                 setIsLoading(true)
 
-                const response: AxiosResponse<ReleaseResponse> =
-                    await $api.get(`${$artists}/${artistId}/releases?key=${AUTH_KEY}&secret=${AUTH_SECRET}`, {
-                            params: {
-                                per_page: 5,
-                            }
-                        });
+                const response: AxiosResponse<ReleaseResponse> = await $api.get(
+                    `${$artists}/${artistId}/releases?key=${AUTH_KEY}&secret=${AUTH_SECRET}`,
+                    {
+                        params: {
+                            per_page: 5,
+                        },
+                    }
+                )
 
                 if (response.status === 200) {
                     setReleases([...response.data.releases])
                 }
                 setIsLoading(false)
-
             } catch (e) {
-                setError("Error while making request");
+                setError("Error while making request")
             }
         }
 
         fetchReleasesByArtistId()
-
-    }, [artistId]);
-
+    }, [artistId])
 
     return {
         isLoading,
         error,
-        releases
+        releases,
     }
 }

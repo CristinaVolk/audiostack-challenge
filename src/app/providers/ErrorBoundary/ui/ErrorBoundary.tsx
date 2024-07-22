@@ -1,14 +1,13 @@
-import React, { ErrorInfo, ReactNode } from 'react';
+import React, { ErrorInfo, ReactNode } from "react"
 
-import {Error} from '@/shared/ui/Error/Error'
-
+import { Error } from "@/shared/ui/Error/Error"
 
 interface ErrorBoundaryProps {
-    children: ReactNode;
+    children: ReactNode
 }
 
 interface ErrorBoundaryState {
-    hasError: boolean;
+    hasError: boolean
 }
 
 export class ErrorBoundary extends React.Component<
@@ -16,26 +15,26 @@ export class ErrorBoundary extends React.Component<
     ErrorBoundaryState
 > {
     constructor(props: ErrorBoundaryProps) {
-        super(props);
-        this.state = { hasError: false };
+        super(props)
+        this.state = { hasError: false }
     }
 
     static getDerivedStateFromError() {
-        return { hasError: true };
+        return { hasError: true }
     }
 
     componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-        console.log(error, errorInfo);
+        console.log(error, errorInfo)
     }
 
     render() {
-        const { children } = this.props;
-        const { hasError } = this.state;
+        const { children } = this.props
+        const { hasError } = this.state
 
         if (hasError) {
-            return <Error />;
+            return <Error />
         }
 
-        return children;
+        return children
     }
 }

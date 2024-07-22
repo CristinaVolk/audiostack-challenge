@@ -1,3 +1,7 @@
-export type {ThunkConfig, ThunkExtraArg, StateSchema} from "./config/StateSchema";
+export type {
+    ThunkConfig,
+    ThunkExtraArg,
+    StateSchema,
+} from "./config/StateSchema"
 
-export {StoreProvider} from "./ui/StoreProvider";
+export { StoreProvider } from "./ui/StoreProvider"

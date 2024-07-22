@@ -1,25 +1,19 @@
-import React, { memo, ReactElement } from 'react';
+import React, { memo, ReactElement } from "react"
 
-import classes from './MainLayout.module.scss';
+import classes from "./MainLayout.module.scss"
 
-import { classNames } from '@/shared/helpers/classNames';
+import { classNames } from "@/shared/helpers/classNames"
 
 interface MainLayoutProps {
-    className?: string;
-    header: ReactElement;
-    content: ReactElement;
-    sidebar: ReactElement;
-    toolbar?: ReactElement;
+    className?: string
+    header: ReactElement
+    content: ReactElement
+    sidebar: ReactElement
+    toolbar?: ReactElement
 }
 
 export const MainLayout = memo((props: MainLayoutProps) => {
-    const {
-        className,
-        header,
-        content,
-        sidebar ,
-        toolbar,
-    } = props;
+    const { className, header, content, sidebar, toolbar } = props
 
     return (
         <div className={classNames(classes.MainLayout, {}, [className])}>
@@ -33,5 +27,5 @@ export const MainLayout = memo((props: MainLayoutProps) => {
                 </div>
             </div>
         </div>
-    );
-});
+    )
+})

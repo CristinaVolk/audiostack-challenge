@@ -1,2 +1,1 @@
-export {ArtistsList} from './ui/ArticleList/ArtistsList'
-
+export { ArtistsList } from "./ui/ArticleList/ArtistsList"

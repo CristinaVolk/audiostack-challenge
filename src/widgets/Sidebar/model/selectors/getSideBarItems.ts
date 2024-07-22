@@ -1,22 +1,25 @@
-import { SideBarItemType } from '../types/sidebar';
-import {getRouteAboutPage, getRouteArtistsListPage, getRouteHome} from "@/shared/consts/router";
-
+import { SideBarItemType } from "../types/sidebar"
+import {
+    getRouteAboutPage,
+    getRouteArtistsListPage,
+    getRouteHome,
+} from "@/shared/consts/router"
 
 export const useSideBarItems = () => {
     const sideBarItemsList: Array<SideBarItemType> = [
         {
             path: getRouteHome(),
-            text: 'Home',
+            text: "Home",
         },
         {
             path: getRouteAboutPage(),
-            text: 'About',
+            text: "About",
         },
         {
             path: getRouteArtistsListPage(),
-            text: 'Artists',
+            text: "Artists",
         },
-    ];
+    ]
 
-    return sideBarItemsList;
-};
+    return sideBarItemsList
+}

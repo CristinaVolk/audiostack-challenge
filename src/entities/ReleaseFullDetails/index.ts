@@ -1,1 +1,1 @@
-export {ReleaseFullDetails} from "./ui/ReleaseFullDetails";
+export { ReleaseFullDetails } from "./ui/ReleaseFullDetails"

@@ -1,18 +1,17 @@
-import {createBrowserRouter} from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom"
 
-import {App} from "../../../ui/App";
+import { App } from "../../../ui/App"
 
-import {ArtistsListPage} from "@/pages/ArtistsListPage";
-import {AboutPage} from "@/pages/AboutPage";
-import {ReleaseDetailsPage} from "@/pages/ReleaseDetailsPage";
-import {HomePage} from "@/pages/HomePage";
+import { ArtistsListPage } from "@/pages/ArtistsListPage"
+import { AboutPage } from "@/pages/AboutPage"
+import { ReleaseDetailsPage } from "@/pages/ReleaseDetailsPage"
+import { HomePage } from "@/pages/HomePage"
 import {
     getRouteAboutPage,
     getRouteHome,
     getRouteArtistsListPage,
-    getRouteReleaseDetailsPage
-} from "@/shared/consts/router";
-
+    getRouteReleaseDetailsPage,
+} from "@/shared/consts/router"
 
 export const router = createBrowserRouter([
     {
@@ -32,9 +31,9 @@ export const router = createBrowserRouter([
                 Component: ArtistsListPage,
             },
             {
-                path: getRouteReleaseDetailsPage(':id'),
-                Component: ReleaseDetailsPage
-            }
-        ]
+                path: getRouteReleaseDetailsPage(":id"),
+                Component: ReleaseDetailsPage,
+            },
+        ],
     },
-]);
+])
