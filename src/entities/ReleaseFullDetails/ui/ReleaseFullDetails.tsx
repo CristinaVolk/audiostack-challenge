@@ -1,12 +1,13 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
-import classes from "./ReleaseFullDetails.scss"
+import classes from "./ReleaseFullDetails.module.scss"
 
 import { ImageComponent } from "@/shared/ui/ImageComponent/ImageComponent"
 import { ReleaseFullType } from "@/shared/types/Release"
 import { HStack, VStack } from "@/shared/ui/Stack"
 import { Card } from "@/shared/ui/Card/Card"
+
 
 interface ReleaseFullDetails {
     release: ReleaseFullType
@@ -45,7 +46,12 @@ export const ReleaseFullDetails = (props: ReleaseFullDetails) => {
                 )}
             </HStack>
 
-            <Card max border="smooth" cardPaddings="16">
+            <Card
+                max
+                border="smooth"
+                cardPaddings="16"
+                className={classes.cardDetails}
+            >
                 <VStack gap="15">
                     <p>
                         <b>Date released:</b> {year}{" "}
@@ -72,13 +78,18 @@ export const ReleaseFullDetails = (props: ReleaseFullDetails) => {
                 <b>Videos:</b>
             </h2>
             {videos?.map((video) => (
-                <Card key={video.uri} border="smooth">
+                <Card
+                    max
+                    key={video.uri}
+                    border="smooth"
+                    className={classes.cardDetails}
+                >
                     <VStack gap="10">
                         <h3>
                             <b>{video.title}</b>
                         </h3>
                         <Link target="_blank" to={video.uri}>
-                            {video.uri}
+                            <h4>{video.uri}</h4>
                         </Link>
                         <p>{video.description}</p>
                     </VStack>
