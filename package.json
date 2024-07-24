@@ -28,7 +28,7 @@
   },
   "scripts": {
     "start": "craco start",
-    "build": "craco build",
+    "build": "craco build $env:NODE_OPTIONS=\"--openssl-legacy-provider",
     "test": "craco test",
     "eject": "craco eject",
     "prettier": "npx prettier --write \"**/*.{ts,tsx, json}\"",
