@@ -34,6 +34,7 @@ export const ArtistsListPage = () => {
 
     const {
         isLoading,
+        isFetching,
         data: artistsData,
         error,
     } = useArtistsListPage(paramsConfig, {
@@ -60,6 +61,14 @@ export const ArtistsListPage = () => {
         )
     }
 
+    if (isFetching) {
+        return (
+            <HStack max justify="center">
+                <h1>Fetching artists...</h1>
+            </HStack>
+        )
+    }
+
     return (
         <VStack align="center" gap="30">
             <h1>{pageTitle}</h1>
@@ -68,7 +77,9 @@ export const ArtistsListPage = () => {
                 <Error message={JSON.stringify(error.data)} />
             )}
 
-            {artistsData && (
+            {artistsData?.results.length === 0 ? (
+                <h1>No artists found...</h1>
+            ) : (
                 <>
                     <ArtistsList artists={artistsData.results} />
                     <HStack className={classes.pagination} align="center">

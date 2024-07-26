@@ -15,6 +15,8 @@ import { HStack, VStack } from "@/shared/ui/Stack"
 import { ReleaseFullDetails } from "@/entities/ReleaseFullDetails"
 import { Error } from "@/shared/ui/Error/Error"
 import { AppRoutes } from "@/shared/types/Router"
+import { Link } from "react-router-dom"
+import { getRouteArtistsListPage } from "@/shared/consts/router"
 
 export const ReleaseDetailsPage = () => {
     const { id } = useParams<{ id: string }>()
@@ -27,8 +29,19 @@ export const ReleaseDetailsPage = () => {
         dispatch(fetchReleaseById(id))
     }, [dispatch, id])
 
-    if (!id) {
-        return null
+    const getContent = () => {
+        return id ? (
+            <>
+                <Link to={getRouteArtistsListPage()}>Come back</Link>
+                <h1>No Release Details found...</h1>
+            </>
+        ) : (
+            <>
+                <h1>{AppRoutes.RELEASE_DETAILS}:</h1>
+                {error && <Error message={error} />}
+                {release && <ReleaseFullDetails release={release} />}
+            </>
+        )
     }
 
     if (isLoading) {
@@ -41,9 +54,7 @@ export const ReleaseDetailsPage = () => {
 
     return (
         <VStack max gap="20">
-            <h1>{AppRoutes.RELEASE_DETAILS}:</h1>
-            {error && <Error message={error} />}
-            {release && <ReleaseFullDetails release={release} />}
+            {getContent()}
         </VStack>
     )
 }

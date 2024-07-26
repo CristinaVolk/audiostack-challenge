@@ -1,4 +1,5 @@
 # .husky/pre-commit
 
+yarn run prettier
 yarn run build
 # yarn run lint
