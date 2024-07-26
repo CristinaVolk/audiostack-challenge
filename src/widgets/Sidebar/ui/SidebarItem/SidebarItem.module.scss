@@ -6,6 +6,7 @@
 
   h2 {
     color: var(--lightBackground);
+    word-break: break-all;
   }
 
   &:hover {

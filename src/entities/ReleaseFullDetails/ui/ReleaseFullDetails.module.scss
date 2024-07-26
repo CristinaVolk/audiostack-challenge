@@ -8,6 +8,14 @@
     object-fit: contain;
   }
 
+  a:hover {
+    font-style: italic;
+  }
+
+  .videoDetails {
+    padding: 15px;
+  }
+
   @media (width <= $mq-mobile) {
     .cardDetails,
     .videoDetails {
@@ -16,12 +24,11 @@
     }
 
     .videoDetails {
-      h4 {
-        font-size: 3vw;
+      h4, p {
+        font-size: calc(0.4rem + 2vw);
+        word-break: break-all;
       }
-      p {
-        font-size:2vw;
-      }
+
     }
   }
 }

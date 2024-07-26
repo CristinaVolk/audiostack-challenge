@@ -1,3 +1,5 @@
+@import "@/app/styles/variables/global";
+
 .ArtistsListItem {
   box-shadow: var(--shadow-soft);
 
@@ -6,10 +8,18 @@
   }
 
   .imgContainer {
-    width: 200px;
+    max-width: 200px;
+    min-width: 100px;
+  }
+
+  @media (width <= $mq-mobile) {
+    .imgContainer {
+      min-width: 0;
+    }
   }
 
   h3, h4 {
     font-weight: 600;
+    font-size: calc(0.6rem + 1vw);
   }
 }
