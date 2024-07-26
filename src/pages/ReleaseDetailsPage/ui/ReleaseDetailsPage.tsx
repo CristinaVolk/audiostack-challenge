@@ -32,14 +32,14 @@ export const ReleaseDetailsPage = () => {
     const getContent = () => {
         return id ? (
             <>
-                <Link to={getRouteArtistsListPage()}>Come back</Link>
-                <h1>No Release Details found...</h1>
-            </>
-        ) : (
-            <>
                 <h1>{AppRoutes.RELEASE_DETAILS}:</h1>
                 {error && <Error message={error} />}
                 {release && <ReleaseFullDetails release={release} />}
+            </>
+        ) : (
+            <>
+                <Link to={getRouteArtistsListPage()}>Come back</Link>
+                <h1>No Release Details found...</h1>
             </>
         )
     }
