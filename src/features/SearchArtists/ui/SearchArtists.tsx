@@ -1,4 +1,10 @@
-import React, { ChangeEvent, memo, useCallback, useEffect, useState } from "react"
+import React, {
+    ChangeEvent,
+    memo,
+    useCallback,
+    useEffect,
+    useState,
+} from "react"
 
 import { searchArtistsActions } from "../model/slices/searchArtistsSlice"
 import classes from "./SearchArtists.module.scss"
@@ -13,12 +19,15 @@ const DELAY = 800
 
 export const SearchArtists = memo(() => {
     const dispatch = useAppDispatch()
-    const [searchValue, setSearchValue] = useState('')
-    const debouncedSearchTerm = useDebounce(searchValue, DELAY);
+    const [searchValue, setSearchValue] = useState("")
+    const debouncedSearchTerm = useDebounce(searchValue, DELAY)
 
-    const onSearchChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-        setSearchValue(event.target.value)
-    }, [])
+    const onSearchChange = useCallback(
+        (event: ChangeEvent<HTMLInputElement>) => {
+            setSearchValue(event.target.value)
+        },
+        []
+    )
 
     useEffect(() => {
         dispatch(searchArtistsActions.setSearch(debouncedSearchTerm))

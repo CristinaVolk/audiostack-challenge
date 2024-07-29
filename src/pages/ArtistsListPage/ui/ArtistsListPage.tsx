@@ -69,7 +69,6 @@ export const ArtistsListPage = () => {
         )
     }
 
-
     return (
         <VStack align="center" gap="30">
             <h1>{pageTitle}</h1>
