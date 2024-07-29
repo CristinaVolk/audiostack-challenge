@@ -65,6 +65,9 @@
     "sass": "^1.77.8"
   },
   "lint-staged": {
-    "*.{ts,tsx}": ["prettier --list-different", "eslint"]
+    "*.{ts,tsx}": [
+      "prettier --list-different",
+      "eslint"
+    ]
   }
 }

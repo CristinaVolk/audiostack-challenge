@@ -1,25 +1,28 @@
-import React, { ChangeEvent, memo, useCallback } from "react"
-import { useSelector } from "react-redux"
+import React, { ChangeEvent, memo, useCallback, useEffect, useState } from "react"
 
 import { searchArtistsActions } from "../model/slices/searchArtistsSlice"
-import { getSearchTerm } from "../model/selectors/getSearchArtistsSelector"
 import classes from "./SearchArtists.module.scss"
 
 import { classNames } from "@/shared/helpers/classNames"
 import { useAppDispatch } from "@/shared/hooks/useAppDispatch"
 import { ReactComponent as SearchIcon } from "@/shared/assets/icons/search.svg"
 import { HStack } from "@/shared/ui/Stack"
+import { useDebounce } from "../model/hooks/useDebounceSearch"
+
+const DELAY = 800
 
 export const SearchArtists = memo(() => {
     const dispatch = useAppDispatch()
-    const search = useSelector(getSearchTerm)
+    const [searchValue, setSearchValue] = useState('')
+    const debouncedSearchTerm = useDebounce(searchValue, DELAY);
 
-    const onSearchChange = useCallback(
-        (event: ChangeEvent<HTMLInputElement>) => {
-            dispatch(searchArtistsActions.setSearch(event.target.value))
-        },
-        [dispatch]
-    )
+    const onSearchChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+        setSearchValue(event.target.value)
+    }, [])
+
+    useEffect(() => {
+        dispatch(searchArtistsActions.setSearch(debouncedSearchTerm))
+    }, [searchValue, debouncedSearchTerm, dispatch])
 
     return (
         <HStack
@@ -31,7 +34,7 @@ export const SearchArtists = memo(() => {
             <input
                 className={classes.input}
                 onChange={onSearchChange}
-                value={search}
+                value={searchValue}
                 placeholder="Search for an artist"
             />
         </HStack>

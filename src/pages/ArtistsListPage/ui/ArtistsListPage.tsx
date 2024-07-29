@@ -69,6 +69,7 @@ export const ArtistsListPage = () => {
         )
     }
 
+
     return (
         <VStack align="center" gap="30">
             <h1>{pageTitle}</h1>
@@ -77,11 +78,11 @@ export const ArtistsListPage = () => {
                 <Error message={JSON.stringify(error.data)} />
             )}
 
-            {artistsData?.results.length === 0 ? (
+            {artistsData?.results?.length === 0 ? (
                 <h1>No artists found...</h1>
             ) : (
                 <>
-                    <ArtistsList artists={artistsData.results} />
+                    <ArtistsList artists={artistsData?.results} />
                     <HStack className={classes.pagination} align="center">
                         <Arrow
                             onClick={paginateLeft}
