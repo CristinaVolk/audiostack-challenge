@@ -1,7 +1,7 @@
 import React from "react"
 import { useLocation } from "react-router"
 
-import { AppRouterByPathPattern } from "@/shared/consts/router"
+import { AppRouterByPathPattern } from "@/shared/consts/router/router"
 import { VStack } from "@/shared/ui/Stack"
 
 export const AboutPage = () => {

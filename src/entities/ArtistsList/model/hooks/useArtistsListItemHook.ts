@@ -3,7 +3,7 @@ import { AxiosResponse } from "axios"
 
 import { ReleaseResponse } from "../types/ReleaseResponse"
 
-import { $artists } from "@/shared/api/endpoints"
+import { $artists } from "@/shared/consts/api/endpoints"
 import { $api } from "@/shared/api/api"
 import { Release } from "@/shared/types/Release"
 import { AUTH_KEY, AUTH_SECRET } from "@/shared/api/config"

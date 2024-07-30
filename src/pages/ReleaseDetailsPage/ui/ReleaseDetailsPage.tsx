@@ -16,7 +16,7 @@ import { ReleaseFullDetails } from "@/entities/ReleaseFullDetails"
 import { Error } from "@/shared/ui/Error/Error"
 import { AppRoutes } from "@/shared/types/Router"
 import { Link } from "react-router-dom"
-import { getRouteArtistsListPage } from "@/shared/consts/router"
+import { getRouteArtistsListPage } from "@/shared/consts/router/router"
 
 export const ReleaseDetailsPage = () => {
     const { id } = useParams<{ id: string }>()

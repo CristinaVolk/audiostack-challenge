@@ -11,7 +11,7 @@ import {
     getRouteHome,
     getRouteArtistsListPage,
     getRouteReleaseDetailsPage,
-} from "@/shared/consts/router"
+} from "@/shared/consts/router/router"
 
 export const router = createBrowserRouter([
     {

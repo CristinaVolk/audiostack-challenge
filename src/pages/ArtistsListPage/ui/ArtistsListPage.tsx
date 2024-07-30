@@ -8,7 +8,7 @@ import { useArtistsListPage } from "../model/api/artistsListPageApi"
 import { ParamsConfig } from "../model/types/ArtistsResponse"
 import classes from "./ArtistsListPage.module.scss"
 
-import { AppRouterByPathPattern } from "@/shared/consts/router"
+import { AppRouterByPathPattern } from "@/shared/consts/router/router"
 import { useAppDispatch } from "@/shared/hooks/useAppDispatch"
 import { getSearchTerm } from "@/features/SearchArtists"
 import { Loading } from "@/shared/ui/Loading/Loading"
@@ -73,9 +73,7 @@ export const ArtistsListPage = () => {
         <VStack align="center" gap="30">
             <h1>{pageTitle}</h1>
 
-            {error && "data" in error && (
-                <Error message={JSON.stringify(error.data)} />
-            )}
+            {error && <Error message={JSON.stringify(error)} />}
 
             {artistsData?.results?.length === 0 ? (
                 <h1>No artists found...</h1>

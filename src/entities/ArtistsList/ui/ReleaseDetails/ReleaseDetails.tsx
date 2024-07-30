@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom"
 import classes from "./ReleaseDetail.module.scss"
 
 import type { Release } from "@/shared/types/Release"
-import { getRouteReleaseDetailsPage } from "@/shared/consts/router"
+import { getRouteReleaseDetailsPage } from "@/shared/consts/router/router"
 
 interface ReleaseDetailsProps {
     release: Release
